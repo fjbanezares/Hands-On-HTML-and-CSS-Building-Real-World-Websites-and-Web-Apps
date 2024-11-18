@@ -47,7 +47,7 @@ h2 {
 #contact {
     float: right;
     /* Positioned to the right */
-    width: 30%;
+    width: 60%;
     /* Taking 30% width of the container */
     margin-right: 20px;
 }
