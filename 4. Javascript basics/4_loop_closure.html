@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Block Leakage, Closures, and IIFE in JS (Interactive)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 32px;
+        }
+
+        .example {
+            background: #fff;
+            border: 1px solid #bbb;
+            padding: 22px;
+            border-radius: 8px;
+            margin-bottom: 34px;
+        }
+
+        button {
+            padding: 9px 19px;
+            font-size: 16px;
+            background: #1976d2;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        pre {
+            background: #e3f2fd;
+            padding: 8px;
+            border-radius: 5px;
+        }
+
+        h2 {
+            color: #1976d2;
+        }
+
+        .theory {
+            background: #fffde7;
+            border-left: 4px solid #fbc02d;
+            padding: 12px;
+            margin-bottom: 10px;
+        }
+
+        .resultbox {
+            background: #e8f5e9;
+            border-left: 4px solid #43a047;
+            padding: 10px;
+            margin-top: 12px;
+        }
+
+        .tip {
+            color: #c62828;
+            font-weight: bold;
+        }
+
+        .highlight {
+            background: #cce0ff;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Block Leakage, Closures, and IIFE: JavaScript Explained</h1>
+    <div class="tip">Open your browser console to see all code output!</div>
+
+    <div class="example">
+        <h2>1. Block "Leakage" with var</h2>
+        <div class="theory">
+            <b>Concept:</b> <span class="highlight">var</span> is function-scoped, not block-scoped. Declaring it in
+            multiple blocks leaks to and overwrites the same variable in the module/function scope.
+        </div>
+        <pre><code>
+let functions = [];
+
+{
+  var i = 4;
+  functions.push(function() { console.log("Block 1:", i); });
+}
+
+{
+  var i = 2;
+  functions.push(function() { console.log("Block 2:", i); });
+}
+
+functions[0](); // Outputs: 2
+functions[1](); // Outputs: 2
+console.log("Global i:", i); // Outputs: 2
+    </code></pre>
+        <button onclick="(function(){
+      let functions = [];
+      { var i = 4; functions.push(function() { console.log('Block 1:', i); }); }
+      { var i = 2; functions.push(function() { console.log('Block 2:', i); }); }
+      functions[0]();
+      functions[1]();
+      console.log('Global i:', i);
+      alert('Both functions print i=2 (var leaks, last assignment wins)');
+    })()">Run Example 1</button>
+        <div class="resultbox"><code>Block 1: 2</code> <br> <code>Block 2: 2</code> <br> <code>Global i: 2</code></div>
+    </div>
+
+    <div class="example">
+        <h2>2. Block Scope with let</h2>
+        <div class="theory">
+            <b>Concept:</b> <span class="highlight">let</span> is block-scoped. Multiple blocks each have their own
+            variable.
+        </div>
+        <pre><code>
+let functions = [];
+
+{
+  let i = 4;
+  functions.push(function() { console.log("Block 1:", i); });
+}
+
+{
+  let i = 2;
+  functions.push(function() { console.log("Block 2:", i); });
+}
+
+functions[0](); // Outputs: 4
+functions[1](); // Outputs: 2
+    </code></pre>
+        <button onclick="(function(){
+      let functions = [];
+      { let i = 4; functions.push(function() { console.log('Block 1:', i); }); }
+      { let i = 2; functions.push(function() { console.log('Block 2:', i); }); }
+      functions[0]();
+      functions[1]();
+      alert('Functions print Block 1: 4 and Block 2: 2 (let is block-scoped)');
+    })()">Run Example 2</button>
+        <div class="resultbox"><code>Block 1: 4</code> <br> <code>Block 2: 2</code></div>
+    </div>
+
+    <div class="example">
+        <h2>3. Closure Concept</h2>
+        <div class="theory">
+            <b>Definition:</b> A <span class="highlight">closure</span> is a function that "remembers" the variables
+            from the scope where it was created, even if called elsewhere. Closures let functions capture variables at
+            creation time.
+        </div>
+        <pre><code>
+function makeClosure() {
+  let msg = "Hello, closure!";
+  return function() {
+    console.log("Closure says:", msg);
+  };
+}
+let myFunc = makeClosure();
+myFunc(); // Outputs: Hello, closure!
+    </code></pre>
+        <button
+            onclick="(function(){ function makeClosure(){ let msg='Hello, closure!'; return function(){ console.log('Closure says:', msg); }; } let myFunc=makeClosure(); myFunc(); alert('Closure remembers msg=Hello, closure!'); })()">
+            Run Example 3
+        </button>
+
+        <div class="resultbox"><code>Closure says: Hello, closure!</code></div>
+    </div>
+
+    <div class="example">
+        <h2>4. Immediately Invoked Function Expression (IIFE)</h2>
+        <div class="theory">
+            <b>Definition:</b> An <span class="highlight">IIFE</span> is a function that is defined and executed right
+            away. Useful for creating a scope and capturing values immediately.
+        </div>
+        <pre><code>
+for (var i = 0; i < 3; i++) {
+  (function(capturedI) {
+    setTimeout(function() { 
+      console.log("IIFE value:", capturedI);
+    }, 100);
+  })(i);
+}
+
+// Outputs: IIFE value: 0, then 1, then 2 (because capturedI is unique per call)
+    </code></pre>
+        <button
+            onclick="(function(){
+      for (var i = 0; i < 3; i++) {
+        (function(capturedI){
+          setTimeout(function() {
+            console.log(' IIFE value:', capturedI); }, 100); })(i); } setTimeout(function(){alert('IIFE captures unique i values: 0, 1, 2');}, 350); })()">Run
+            Example 4</button>
+        <div class="resultbox"><code>IIFE value: 0</code><br><code>IIFE value: 1</code><br><code>IIFE value: 2</code>
+        </div>
+    </div>
+
+    <div class="tip">Toggle and experiment—compare block scope, closure, and IIFE effects!</div>
+</body>
+
+</html>

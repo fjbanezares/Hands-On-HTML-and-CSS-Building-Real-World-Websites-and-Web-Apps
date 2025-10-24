@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Prototypes and Classes Explained ...Interactive JS Demos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6fa;
+            margin: 30px;
+        }
+
+        .section {
+            background: #fff;
+            border: 1px solid #ccd;
+            border-radius: 10px;
+            margin-bottom: 29px;
+            padding: 22px;
+        }
+
+        h2 {
+            color: #1976d2;
+        }
+
+        .explain {
+            background: #fffde7;
+            border-left: 4px solid #fbc02d;
+            padding: 9px;
+            margin: 7px 0 12px 0;
+        }
+
+        .result {
+            background: #e8f5e9;
+            border-left: 4px solid #43a047;
+            padding: 8px;
+            margin-top: 6px;
+        }
+
+        button {
+            padding: 9px 20px;
+            font-size: 15px;
+            border-radius: 5px;
+            border: none;
+            color: #fff;
+            background: #1976d2;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        pre {
+            background: #e3f2fd;
+            padding: 7px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .tip {
+            color: #c62828;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Understanding Prototypes, Classes, and the Prototype Chain in JS</h1>
+    <div class="tip">Open your browser console for true output and details!</div>
+
+    <!-- 1. Classic Class Example -->
+    <div class="section">
+        <h2>1. Classic "Factory" Class Example</h2>
+        <div class="explain">
+            A <b>class</b> can be seen as a "blueprint" for making objects (like cars). Each object is made by the class
+            but can have individual features.
+        </div>
+        <pre><code>
+class Car {
+  constructor(color) { this.color = color; }
+  honk() { console.log("Beep!"); }
+}
+let car1 = new Car("red");
+let car2 = new Car("blue");
+console.log(car1.color, car2.color); // "red", "blue"
+car1.honk(); // "Beep!"
+car2.honk(); // "Beep!"
+    </code></pre>
+        <button
+            onclick="(function(){ class Car{ constructor(color){this.color=color;} honk(){console.log('Beep!');} } let car1=new Car('red'); let car2=new Car('blue'); console.log('Car1:', car1.color); console.log('Car2:', car2.color); car1.honk(); car2.honk(); alert('Check the console: each car made from the class; methods shared!'); })()">
+            Run Class Example
+        </button>
+        <div class="result">Both cars are made from a <b>class</b>. Methods (like <code>honk</code>) are shared!</div>
+    </div>
+
+    <!-- 2. JavaScript Prototype Example -->
+    <div class="section">
+        <h2>2. Prototype-Based Object Creation</h2>
+        <div class="explain">
+            In JavaScript, prototypes let one object copy another, not just copy from a "factory". Objects are linked in
+            a <b>prototype chain</b>.
+        </div>
+        <pre><code>
+let protoCar = { honk() { console.log("Proto beep!"); } };
+let toyCar = Object.create(protoCar);
+toyCar.color = "yellow";
+toyCar.honk(); // "Proto beep!"
+console.log(toyCar.color); // "yellow"
+    </code></pre>
+        <button
+            onclick="(function(){ let protoCar={honk(){console.log('Proto beep!');}}; let toyCar=Object.create(protoCar); toyCar.color='yellow'; toyCar.honk(); console.log('toyCar color:', toyCar.color); alert('Check the console: toyCar uses protoCar for honk!'); })()">
+            Run Prototype Example
+        </button>
+        <div class="result">toyCar inherits <b>honk</b> from protoCar, via the prototype chain.</div>
+    </div>
+
+    <!-- 3. Prototype Chain Example -->
+    <div class="section">
+        <h2>3. Following the Prototype Chain</h2>
+        <div class="explain">
+            If an object doesn’t know something, it asks its prototype. If that prototype doesn’t know, it keeps asking
+            up the chain until <code>null</code>.
+        </div>
+        <pre><code>
+let ancestor = { drive() { console.log("Ancestor drives!"); } };
+let parent = Object.create(ancestor);
+let child = Object.create(parent);
+child.honk = function(){ console.log("Child beep!"); }
+child.honk(); // "Child beep!"
+child.drive(); // "Ancestor drives!", found up the prototype chain.
+    </code></pre>
+        <button
+            onclick="(function(){ let ancestor={drive(){console.log('Ancestor drives!');}}; let parent=Object.create(ancestor); let child=Object.create(parent); child.honk=function(){console.log('Child beep!');}; child.honk(); child.drive(); alert('Console: honk from child, drive from ancestor via chain.'); })()">
+            Run Prototype Chain Example
+        </button>
+        <div class="result">First, it looks locally (<code>honk</code>), if not found (e.g. <code>drive</code>), it asks
+            up the chain.</div>
+    </div>
+
+    <!-- 4. Methods on the Prototype -->
+    <div class="section">
+        <h2>4. Shared Methods via Prototypes</h2>
+        <div class="explain">
+            Methods defined on a prototype (class or object) are shared between all instances, saving memory (like
+            "static" in other languages).
+        </div>
+        <pre><code>
+function Animal(type) { this.type = type; }
+Animal.prototype.speak = function() { console.log("I am a " + this.type); };
+let cat = new Animal("cat");
+let dog = new Animal("dog");
+cat.speak(); // "I am a cat"
+dog.speak(); // "I am a dog"
+    </code></pre>
+        <button
+            onclick="(function(){ function Animal(type){this.type=type;} Animal.prototype.speak=function(){console.log('I am a '+this.type);}; let cat=new Animal('cat'); let dog=new Animal('dog'); cat.speak(); dog.speak(); alert('Methods on prototype are shared, not copied!'); })()">
+            Run Shared Methods Example
+        </button>
+        <div class="result"><b>cat</b> and <b>dog</b> share <code>speak</code> from the prototype.</div>
+    </div>
+
+    <!-- 5. Compare: Own vs Prototype -->
+    <div class="section">
+        <h2>5. Own Properties vs. Prototype Properties</h2>
+        <div class="explain">
+            Real objects can have their <b>own</b> properties and shared (prototype) properties. You can check which is
+            which.
+        </div>
+        <pre><code>
+let bike = { wheels: 2 };
+let bikeProto = { ringBell() { console.log("Ding!"); } };
+Object.setPrototypeOf(bike, bikeProto);
+console.log('wheels' in bike); // true (own)
+console.log('ringBell' in bike); // true (prototype)
+console.log(bike.hasOwnProperty('wheels')); // true
+console.log(bike.hasOwnProperty('ringBell')); // false
+bike.ringBell(); // "Ding!"
+    </code></pre>
+        <button
+            onclick="(function(){ let bike={wheels:2}; let bikeProto={ringBell(){console.log('Ding!');}}; Object.setPrototypeOf(bike,bikeProto); console.log('wheels' in bike); console.log('ringBell' in bike); console.log(bike.hasOwnProperty('wheels')); console.log(bike.hasOwnProperty('ringBell')); bike.ringBell(); alert('Console: see own and prototype properties clearly!'); })()">
+            Run Own vs Prototype Properties Example
+        </button>
+        <div class="result">Check <code>hasOwnProperty</code> for own vs. prototype inheritance.</div>
+    </div>
+
+    <!-- 6. Classes are Syntactic Sugar -->
+    <div class="section">
+        <h2>6. Modern Classes: "Sugar" over Prototypes</h2>
+        <div class="explain">
+            Modern <b>class</b> syntax in JS simply makes using prototypes more readable. Behind the scenes, methods go
+            on the prototype, not per instance!
+        </div>
+        <pre><code>
+class Dog {
+  bark() { console.log("Woof!"); }
+}
+let spot = new Dog();
+let fido = new Dog();
+spot.bark(); // "Woof!"
+console.log(spot.bark === fido.bark); // true (shared method)
+    </code></pre>
+        <button
+            onclick="(function(){ class Dog{bark(){console.log('Woof!');}} let spot=new Dog(); let fido=new Dog(); spot.bark(); console.log(spot.bark===fido.bark); alert('Console: methods on prototype, not copied per instance.'); })()">
+            Run Class Sugar Example
+        </button>
+        <div class="result"><code>bark</code> method is <b>shared</b> by all Dogs.</div>
+    </div>
+
+    <div class="tip">Try running and editing each example for hands-on understanding. See what's "own" to each object
+        and what's shared via prototype!</div>
+</body>
+
+</html>

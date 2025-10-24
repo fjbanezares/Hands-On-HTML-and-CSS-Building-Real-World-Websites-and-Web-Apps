@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>JS Variable Declarations: Global Pollution Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 30px;
+    }
+
+    .example {
+      background: #fff;
+      border: 1px solid #bbb;
+      padding: 20px;
+      border-radius: 7px;
+      margin-bottom: 28px;
+    }
+
+    button {
+      padding: 8px 18px;
+      font-size: 15px;
+      cursor: pointer;
+      background: #1976d2;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+
+    pre {
+      background: #e8f5e9;
+      padding: 7px;
+      border-radius: 4px;
+    }
+
+    h2 {
+      color: #1976d2;
+    }
+
+    .alert {
+      color: #ab47bc;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Variable Declarations & Accidental Globals</h1>
+
+  <div class="example">
+    <h2>1. Assigning without Declaration (Non-strict Mode)</h2>
+    <pre><code>
+// This creates a global variable unintentionally!
+function makeGlobal() {
+  accidentalGlobal = 123; // no var/let/const!
+  console.log("accidentalGlobal inside function:", accidentalGlobal);
+}
+makeGlobal();
+console.log("accidentalGlobal outside function:", accidentalGlobal);
+    </code></pre>
+    <button onclick="(function() {
+      function makeGlobal() {
+        accidentalGlobal = 123;
+        console.log('accidentalGlobal inside function:', accidentalGlobal);
+      }
+      makeGlobal();
+      alert('accidentalGlobal OUTSIDE function: ' + accidentalGlobal);
+      // Cleanup for repeated tests
+      try { delete window.accidentalGlobal; } catch(e) {}
+    })()">Run Example 1</button>
+  </div>
+
+  <div class="example">
+    <h2>2. Function Parameter is <u>Not</u> Global</h2>
+    <pre><code>
+// Function arguments never create global variables
+function paramDemo(param) {
+  param = 55;
+  console.log("param inside function:", param);
+}
+paramDemo(44);
+try {
+  console.log(param); // ReferenceError!
+} catch(e) {
+  console.log("Error:", e);
+}
+    </code></pre>
+    <button onclick="(function() {
+      function paramDemo(param) {
+        param = 55;
+        console.log('param inside function:', param);
+      }
+      paramDemo(44);
+      let errMsg = '';
+      try { console.log(param); }
+      catch(e) { errMsg = 'Error: ' + e.message; }
+      console.log(errMsg)
+      alert('Outside function: ' + (errMsg || 'param is visible (should NOT be!)'));
+    })()">Run Example 2</button>
+  </div>
+
+  <div class="example">
+    <h2>3. Strict Mode: No Accidental Globals</h2>
+    <pre><code>
+"use strict";
+function strictGlobalDemo() {
+  try {
+    noVarHere = 'oops'; // Throws ReferenceError!
+  } catch(e) {
+    console.log("Error:", e.message);
+    alert("Error: " + e.message);
+  }
+}
+strictGlobalDemo();
+    </code></pre>
+    <button onclick="(function() {
+      'use strict';
+      function strictGlobalDemo() {
+        try {
+          noVarHere = 'oops';
+        } catch(e) {
+          console.log('Error:', e.message);
+          alert('Error: ' + e.message);
+        }
+      }
+      strictGlobalDemo();
+    })()">Run Example 3</button>
+  </div>
+
+  <div style="color:#d84315;font-weight:bold;">Open your browser console to see <code>console.log</code> output. All
+    alerts summarize the key results.</div>
+  <div>Function parameters <b>never</b> become global; accidental globals only happen through assignments without
+    declaration outside strict mode.</div>
+</body>
+
+</html>

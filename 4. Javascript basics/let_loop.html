@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JS var vs let in Async Loops (Interactive Demos)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+            margin: 32px;
+        }
+
+        .example {
+            background: #fff;
+            border: 1px solid #bbb;
+            padding: 22px;
+            border-radius: 7px;
+            margin-bottom: 32px;
+        }
+
+        button {
+            padding: 8px 18px;
+            font-size: 15px;
+            cursor: pointer;
+            background: #1976d2;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        pre {
+            background: #e3f2fd;
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+        h2 {
+            color: #1976d2;
+        }
+
+        .tip {
+            font-style: italic;
+            color: #c62828;
+            font-weight: bold;
+        }
+
+        .explain {
+            background: #fffde7;
+            border-left: 4px solid #fbc02d;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .resultbox {
+            background: #e8f5e9;
+            border-left: 4px solid #43a047;
+            padding: 10px;
+            margin-top: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>JavaScript <code>var</code> vs <code>let</code> in Async Loops</h1>
+    <div class="tip">Open your browser console to see the full output!</div>
+
+    <div class="example">
+        <h2>1. Classic <code>var</code> in Async Loop</h2>
+        <div class="explain">With <b>var</b>, all asynchronous functions share the same <b>i</b>—after the loop, all
+            callbacks see <b>i = 3</b>.</div>
+        <pre><code>
+for (var i = 0; i < 3; i++) {
+  setTimeout(function() {
+    console.log("var loop async:", i);
+  }, 100);
+}
+    </code></pre>
+        <button onclick="(function(){
+      for (var i = 0; i < 3; i++) {
+        setTimeout(function() {
+          console.log('var loop async:', i);
+        }, 100);
+      }
+      setTimeout(function(){alert('All logs show i=3 (var, shared reference).');}, 250);
+    })()">Run Example 1</button>
+        <div class="resultbox">Expected output: <br>
+            <code>var loop async: 3</code> <br>
+            <code>var loop async: 3</code> <br>
+            <code>var loop async: 3</code>
+        </div>
+    </div>
+
+    <div class="example">
+        <h2>2. Using <code>let</code> for Block Scope</h2>
+        <div class="explain">With <b>let</b>, each iteration gets a fresh, block-scoped <b>i</b>. Each callback captures
+            a different value!
+        </div>
+        <pre><code>
+for (let i = 0; i < 3; i++) {
+  setTimeout(function() {
+    console.log("let loop async:", i);
+  }, 100);
+}
+    </code></pre>
+        <button onclick="(function(){
+      for (let i = 0; i < 3; i++) {
+        setTimeout(function() {
+          console.log('let loop async:', i);
+        }, 100);
+      }
+      setTimeout(function(){alert('See console: logs are 0, 1, 2 (let, block scope)');}, 250);
+    })()">Run Example 2</button>
+        <div class="resultbox">Expected output: <br>
+            <code>let loop async: 0</code> <br>
+            <code>let loop async: 1</code> <br>
+            <code>let loop async: 2</code>
+        </div>
+    </div>
+
+    <div class="example">
+        <h2>3. Fixing <code>var</code> using Closures (IIFE)</h2>
+        <div class="explain">Instead of <code>let</code>, you can fix <code>var</code> with an Immediately-Invoked
+            Function Expression (IIFE), creating a local scope per iteration.
+        </div>
+        <pre><code>
+for (var i = 0; i < 3; i++) {
+  (function(j){
+    setTimeout(function() {
+      console.log("var+closure async:", j);
+    }, 100);
+  })(i);
+}
+    </code></pre>
+        <button onclick="(function(){
+      for (var i = 0; i < 3; i++) {
+        (function(j){
+          setTimeout(function() {
+            console.log('var+closure async:', j);
+          }, 100);
+        })(i);
+      }
+      setTimeout(function(){alert('Closure fixes var: logs are 0, 1, 2');}, 250);
+    })()">Run Example 3</button>
+        <div class="resultbox">Expected output:<br>
+            <code>var+closure async: 0</code> <br>
+            <code>var+closure async: 1</code> <br>
+            <code>var+closure async: 2</code>
+        </div>
+    </div>
+
+    <div class="example">
+        <h2>4. Synchronous For Loop Comparison</h2>
+        <div class="explain">Synchronous console.log in a loop will always print 0, 1, 2 for both <code>var</code> and
+            <code>let</code> because no async context is involved.
+        </div>
+        <pre><code>
+for (var i = 0; i < 3; i++) {
+  console.log("sync var:", i);
+}
+for (let i = 0; i < 3; i++) {
+  console.log("sync let:", i);
+}
+    </code></pre>
+        <button onclick="(function(){
+      for (var i = 0; i < 3; i++) {
+        console.log('sync var:', i);
+      }
+      for (let i = 0; i < 3; i++) {
+        console.log('sync let:', i);
+      }
+      alert('Both sync loops print 0, 1, 2.');
+    })()">Run Example 4</button>
+        <div class="resultbox">Expected output:<br>
+            <code>sync var: 0</code> <br>
+            <code>sync var: 1</code> <br>
+            <code>sync var: 2</code> <br>
+            <code>sync let: 0</code> <br>
+            <code>sync let: 1</code> <br>
+            <code>sync let: 2</code>
+        </div>
+    </div>
+
+    <div class="tip">Try all examples and compare results: async loops reveal the big difference between
+        <code>var</code> and <code>let</code>!
+    </div>
+</body>
+
+</html>

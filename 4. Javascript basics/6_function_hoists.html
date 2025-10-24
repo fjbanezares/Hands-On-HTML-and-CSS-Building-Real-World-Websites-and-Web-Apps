@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Function Hoisting and Expressions: Demo & Explanation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6f6fc;
+      margin: 32px;
+    }
+
+    .example {
+      background: #fff;
+      border: 1px solid #bbb;
+      padding: 24px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+    }
+
+    .explain {
+      background: #fffde7;
+      border-left: 4px solid #fbc02d;
+      padding: 10px;
+      margin-bottom: 12px;
+    }
+
+    pre {
+      background: #e3f2fd;
+      padding: 8px;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 9px 20px;
+      font-size: 15px;
+      border-radius: 5px;
+      border: none;
+      color: #fff;
+      background: #1976d2;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    h2 {
+      color: #1976d2;
+    }
+
+    .result {
+      background: #e8f5e9;
+      border-left: 4px solid #43a047;
+      padding: 8px;
+      margin-top: 8px;
+    }
+
+    .warn {
+      background: #fff3cd;
+      color: #7c5200;
+      padding: 7px;
+      border-radius: 5px;
+      margin-top: 6px;
+    }
+
+    .tip {
+      color: #c62828;
+      font-weight: bold;
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>JavaScript: Hoisting for Function Declarations vs Expressions</h1>
+  <div class="tip">Open your browser console for live output and errors.</div>
+
+  <div class="example">
+    <h2>1. Function Declaration Hoisting</h2>
+    <div class="explain">
+      <b>Theory:</b> With <b>function declarations</b>, the <u>entire function</u> is hoisted. You can call the function
+      before its textual appearance in code.
+    </div>
+    <pre><code>
+// Works fine:
+helloWorld(); // "Hello, World!"
+function helloWorld() {
+  console.log("Hello, World!");
+}
+    </code></pre>
+    <button
+      onclick="(function(){ try{helloWorld1();}catch(e){console.log(e);} function helloWorld1(){ console.log('Hello, World!'); } alert('Check console: function called before definition (works!)'); })()">
+      Run Example 1
+    </button>
+    <div class="result"><code>helloWorld1() logs "Hello, World!"</code></div>
+  </div>
+
+  <div class="example">
+    <h2>2. Function Expression with <code>var</code>: Only Declaration Hoisted</h2>
+    <div class="explain">
+      <b>Theory:</b> With a <b>function expression</b> using odede>var</code>, <u>only the variable declaration is
+        hoisted</u>, not the assignment.
+      If you call it before assignment, it's <b>undefined</b>&rarr; <b>TypeError</b> when you try to call it as a
+      function.
+    </div>
+    <pre>odede>
+// Will fail:
+try { helloWorld(); } catch(e) { console.log(e); }
+var helloWorld = function() {
+  console.log("Hello, World!");
+};
+    </code></pre>
+    <button
+      onclick="(function(){ try{helloWorld2();}catch(e){console.log(e);} var helloWorld2=function(){ console.log('Hello, World! (var)'); }; alert('Check console: helloWorld2 is undefined at call, TypeError!'); })()">
+      Run Example 2
+    </button>
+    <div class="result warn">Expected: <b>TypeError</b>: helloWorld2 is not a function</div>
+  </div>
+
+  <div class="example">
+    <h2>3. Function Expression with <code>let</code> or <code>const</code>: Reference Error (TDZ)</h2>
+    <div class="explain">
+      <b>Theory:</b> With <b>let</b> or <b>const</b>, <u>neither the declaration nor the assignment is usable</u> before
+      the line runs.
+      Trying to access it before its declaration gives a <b>ReferenceError</b> due to the <em>Temporal Dead Zone
+        (TDZ)</em>.
+    </div>
+    <pre><code>
+// Will fail:
+try { helloWorld(); } catch(e) { console.log(e); }
+let helloWorld = function() {
+  console.log("Hello, World!");
+};
+    </code></pre>
+    <button
+      onclick="(function(){ try{helloWorld3();}catch(e){console.log(e);} let helloWorld3=function(){ console.log('Hello, World! (let)'); }; alert('Check console: helloWorld3 not accessible before declaration, ReferenceError!'); })()">
+      Run Example 3
+    </button>
+    <div class="result warn">Expected: <b>ReferenceError</b>: Cannot access 'helloWorld3' before initialization</div>
+  </div>
+
+  <div class="example">
+    <h2>4. Anonymous Function with <code>let</code>, called after declaration</h2>
+    <div class="explain">
+      <b>Theory:</b> After the line declaring the <code>let</code> (or <code>const</code>) function expression, you can
+      use it normally: it behaves like a function.
+    </div>
+    <pre><code>
+// Works only after the line of definition:
+let sayHi = function() { console.log("Hi!"); };
+sayHi(); // "Hi!"
+    </code></pre>
+    <button
+      onclick="(function(){ let sayHi=function(){console.log('Hi!');}; sayHi(); alert('Check console: works after declaration with let/const!'); })()">
+      Run Example 4
+    </button>
+    <div class="result"><code>Hi!</code></div>
+  </div>
+
+  <div class="section">
+    <h2>Summary Table</h2>
+    <table border="1" style="border-collapse:collapse;font-size:15px;">
+      <tr>
+        <th>Type</th>
+        <th>Can call before definition?</th>
+        <th>Error if called before?</th>
+      </tr>
+      <tr>
+        <td>Function Declaration</td>
+        <td>Yes</td>
+        <td>(No error, works)</td>
+      </tr>
+      <tr>
+        <td>Function Expression (var)</td>
+        <td>No (variable hoisted, value undefined)</td>
+        <td>TypeError</td>
+      </tr>
+      <tr>
+        <td>Function Expression (let/const)</td>
+        <td>No (not hoisted)</td>
+        <td>ReferenceError (TDZ)</td>
+      </tr>
+    </table>
+  </div>
+  <div class="tip">Try to predict the output or error before clicking each button for deeper learning!</div

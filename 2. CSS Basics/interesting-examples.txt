@@ -1,0 +1,4 @@
+specificity.html --> what selectors have precedence, nice show. 
+Combining selectors --> combinations.html --> interesting seeing how to compose selectors
+child-selection.html --> select descendants
+width100.html --> to show how to center an element that takes up 100 % taking margins into account

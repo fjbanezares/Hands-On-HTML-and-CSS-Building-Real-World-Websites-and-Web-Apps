@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JS Closures vs Regular vs IIFE – Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f7f9;
+            margin: 32px;
+        }
+
+        .section {
+            background: #fff;
+            border: 1px solid #bbb;
+            border-radius: 9px;
+            margin-bottom: 28px;
+            padding: 24px;
+        }
+
+        button {
+            padding: 9px 20px;
+            font-size: 15px;
+            border-radius: 4px;
+            border: none;
+            background: #1976d2;
+            color: #fff;
+            cursor: pointer;
+            margin-top: 8px;
+            margin-bottom: 12px;
+        }
+
+        pre {
+            background: #e3f2fd;
+            padding: 7px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .result {
+            background: #e8f5e9;
+            border-left: 4px solid #43a047;
+            padding: 10px;
+            margin-top: 9px;
+        }
+
+        h2 {
+            color: #1976d2;
+        }
+
+        .tip {
+            color: #c62828;
+            font-weight: bold;
+        }
+
+        .theory {
+            background: #fffde7;
+            border-left: 4px solid #fbc02d;
+            padding: 9px;
+            margin-bottom: 9px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Closures, Regular Functions, and IIFE – Learn by Running</h1>
+    <div class="tip">Open your browser console to see all code output!</div>
+
+    <div class="section">
+        <h2>1. Closure Example</h2>
+        <div class="theory">
+            <strong>Closure:</strong> The function returned by <code>makeClosure</code> captures and remembers the
+            variable <code>hidden</code> from its outer scope, even after the scope finishes.
+        </div>
+        <pre><code>
+function makeClosure() {
+  let hidden = 42;
+  return function() {
+    console.log("I am a closure! Hidden is:", hidden);
+  };
+}
+let showHidden = makeClosure();
+showHidden(); // prints 42
+    </code></pre>
+        <button
+            onclick="(function(){ function makeClosure(){ let hidden=42; return function(){ console.log('I am a closure! Hidden is:', hidden); }; } let showHidden=makeClosure(); showHidden(); alert('Check the console: closure remembers hidden=42'); })()">
+            Run Closure Demo
+        </button>
+        <div class="result"><code>I am a closure! Hidden is: 42</code></div>
+    </div>
+
+    <div class="section">
+        <h2>2. Regular Function Example</h2>
+        <div class="theory">
+            <strong>Regular Function:</strong> <code>regularFunction</code> just prints its argument. It doesn't
+            "capture" variables from outer scopes.
+        </div>
+        <pre><code>
+function regularFunction(x) {
+  console.log("I am regular! X is:", x);
+}
+regularFunction(99); // prints 99
+    </code></pre>
+        <button
+            onclick="(function(){ function regularFunction(x){ console.log('I am regular! X is:', x); } regularFunction(99); alert('Check the console: only prints 99 (no closure)'); })()">
+            Run Regular Function Demo
+        </button>
+        <div class="result"><code>I am regular! X is: 99</code></div>
+    </div>
+
+    <div class="section">
+        <h2>3. IIFE Example</h2>
+        <div class="theory">
+            <strong>IIFE:</strong> Instantly runs as soon as it's defined. Useful for creating a "temporary scope".
+            Often used to create closures inside loops!
+        </div>
+        <pre><code>
+(function(){
+  let temp = 'Run immediately!';
+  console.log(temp);
+})();
+    </code></pre>
+        <button
+            onclick="(function(){ (function(){ let temp='Run immediately!'; console.log(temp); })(); alert('Check the console: IIFE executed immediately'); })()">
+            Run IIFE Demo
+        </button>
+        <div class="result"><code>Run immediately!</code></div>
+    </div>
+
+    <div class="section">
+        <h2>4. IIFE + Closure in a Loop</h2>
+        <div class="theory">
+            <strong>Loop Closure Problem:</strong> See what happens when you use <code>var</code> in a loop with
+            callbacks (all refer to the same variable!), and how IIFE fixes it by "capturing" a unique value each time.
+        </div>
+        <pre><code>
+// Problem version
+for (var i = 0; i < 3; i++) {
+  setTimeout(function(){ console.log('var loop problem:', i); }, 100);
+}
+
+// IIFE solution
+for (var i = 0; i < 3; i++) {
+  (function(j) {
+    setTimeout(function(){ console.log('IIFE+closure:', j); }, 150);
+  })(i);
+}
+    </code></pre>
+        <button
+            onclick="(function(){ for(var i=0;i<3;i++){ setTimeout(function(){ console.log('var loop problem:', i); },100); } for(var i=0;i<3;i++){ (function(j){ setTimeout(function(){ console.log('IIFE+closure:', j); },15000); })(i); } setTimeout(function(){alert('First 3 logs: var loop problem (always 3). Next 3 logs: IIFE+closure (0,1,2)');},350); })()">
+            Run IIFE+Closure Loop Demo
+        </button>
+        <div class="result"><code>var loop problem: 3</code> <br><code>var loop problem: 3</code>
+            <br><code>var loop problem: 3</code> <br>
+            <code>IIFE+closure: 0</code> <br><code>IIFE+closure: 1</code> <br><code>IIFE+closure: 2</code>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Summary Table</h2>
+        <table border="1" style="border-collapse:collapse;font-size:15px;">
+            <tr>
+                <th>Type</th>
+                <th>Syntax Features</th>
+                <th>Characteristic</th>
+            </tr>
+            <tr>
+                <td>Closure</td>
+                <td>Any function inside a scope</td>
+                <td>Remembers outer variables</td>
+            </tr>
+            <tr>
+                <td>Regular Function</td>
+                <td>function ... { ... }</td>
+                <td>Uses arguments and locals only</td>
+            </tr>
+            <tr>
+                <td>IIFE</td>
+                <td>(function() { ... })();</td>
+                <td>Runs immediately, can create closures</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="tip">Run, read and compare! Open your browser console for all results. Try editing the code blocks to
+        experiment further.</div>
+</body>
+
+</html>

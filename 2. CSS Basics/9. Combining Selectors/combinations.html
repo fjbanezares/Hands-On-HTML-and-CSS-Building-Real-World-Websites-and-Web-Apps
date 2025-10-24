@@ -3,26 +3,41 @@
 
 <head>
   <style>
-    /* Chaining selectors */
+    /* Chaining selectors explanation:
+       This rule applies only to <p> elements that:
+       1. Have the class "highlight".
+       2. Are descendants of a <div> with both "container" and "special" classes.
+    */
     div.container.special p.highlight {
+      /* These styles will apply only to the specified elements. */
       color: red;
+      /* Changes the text color to red */
       font-weight: bold;
+      /* Makes the font bold */
     }
   </style>
 </head>
 
 <body>
+  <!-- First container: Matches the CSS rule -->
+  <div class="container special"> <!-- This <div> has both 'container' and 'special' classes -->
+    <p>Regular paragraph</p> <!-- This <p> does NOT have the "highlight" class, so the rule does not apply -->
 
-  <div class="container special">
-    <p>Regular paragraph</p>
-    <div>
-      <p class="highlight">Highlighted paragraph</p>
+    <div> <!-- Nested <div>, but this does NOT disrupt the matching because the "highlight" <p> is a descendant -->
+      <p class="highlight">Highlighted paragraph</p> <!-- This <p> matches the rule:
+                                                           1. It's inside a <div> with 'container special'.
+                                                           2. It has the "highlight" class. -->
     </div>
   </div>
 
-  <div class="container">
-    <p>Regular paragraph</p>
-    <p class="highlight">This paragraph won't be affected</p>
+  <!-- Second container: Does NOT match the CSS rule -->
+  <div class="container"> <!-- This <div> only has the 'container' class, NOT the 'special' class -->
+    <p>Regular paragraph</p> <!-- This <p> does NOT have the "highlight" class, so the rule does not apply -->
+
+    <p class="highlight">This paragraph won't be affected</p> <!-- Why does this <p> not match?
+          1. Although it has the "highlight" class, its ancestor <div> only has the 'container' class.
+          2. The CSS rule specifically requires BOTH 'container' AND 'special' classes on the ancestor <div>.
+    -->
   </div>
 
 </body>

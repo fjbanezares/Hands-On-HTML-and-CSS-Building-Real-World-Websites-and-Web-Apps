@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JS Conditional Statements & Shortcuts – Interactive</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f6fcfa;
+            margin: 32px;
+        }
+
+        .section {
+            background: #fff;
+            border: 1px solid #bbb;
+            border-radius: 10px;
+            margin-bottom: 28px;
+            padding: 22px;
+        }
+
+        button {
+            padding: 9px 20px;
+            font-size: 15px;
+            border-radius: 5px;
+            border: none;
+            background: #1976d2;
+            color: #fff;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        pre {
+            background: #e3f2fd;
+            padding: 7px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        h2 {
+            color: #1976d2;
+        }
+
+        .explain {
+            background: #fffde7;
+            border-left: 4px solid #fbc02d;
+            padding: 9px;
+            margin-bottom: 9px;
+        }
+
+        .result {
+            background: #e8f5e9;
+            border-left: 4px solid #43a047;
+            padding: 9px;
+            margin-top: 6px;
+        }
+
+        .tip {
+            color: #c62828;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Fun with JavaScript: Conditionals and Shortcuts</h1>
+    <div class="tip">Open your browser console for live output from each example!</div>
+
+    <div class="section">
+        <h2>1. Classic if...else</h2>
+        <div class="explain">
+            <b>Syntax:</b> <code>if (condition) { ... } else if (other) { ... } else { ... }</code><br>
+            Runs different code depending on conditions.
+        </div>
+        <pre><code>
+let day = "Saturday";
+if (day === "Saturday" || day === "Sunday") {
+  console.log("🎉 It's the weekend! Time for fun!");
+} else if (day === "Friday") {
+  console.log("Almost the weekend! Hang tight.");
+} else {
+  console.log("Back to work or school...");
+}
+    </code></pre>
+        <button
+            onclick="(function(){ let day='Saturday'; if(day==='Saturday'||day==='Sunday'){console.log('🎉 It\'s the weekend! Time for fun!');} else if(day==='Friday'){console.log('Almost the weekend! Hang tight.');} else {console.log('Back to work or school...');} alert('Check the console for the result!'); })()">
+            Run Example 1
+        </button>
+        <div class="result">Outputs: <code>🎉 It's the weekend! Time for fun!</code></div>
+    </div>
+
+    <div class="section">
+        <h2>2. Ternary Operator <code>?</code></h2>
+        <div class="explain">
+            <b>Syntax:</b> <code>condition ? valueIfTrue : valueIfFalse</code><br>
+            A shortcut for simple if/else assignments.
+        </div>
+        <pre><code>
+let catCount = 2;
+let isCrazyCatPerson = (catCount > 3) ? "Yes 😺" : "No 🐾";
+console.log(isCrazyCatPerson); // Outputs: "No 🐾"
+    </code></pre>
+        <button
+            onclick="(function(){ let catCount=2; let isCrazyCatPerson=(catCount>3)?'Yes 😺':'No 🐾'; console.log(isCrazyCatPerson); alert('Check the console: are you a crazy cat person?'); })()">
+            Run Example 2
+        </button>
+        <div class="result">Outputs: <code>No 🐾</code></div>
+    </div>
+
+    <div class="section">
+        <h2>3. OR Default (<code>||</code>)</h2>
+        <div class="explain">
+            <b>Syntax:</b> <code>value || default</code><br>
+            Returns the left value, unless it's <b>falsy</b> (undefined, null, 0, "", false, NaN), then it returns the
+            default instead.
+        </div>
+        <pre><code>
+let username;
+let displayName = username || "Stranger";
+console.log(displayName); // Outputs: "Stranger"
+    </code></pre>
+        <button
+            onclick="(function(){ let username; let displayName=username||'Stranger'; console.log(displayName); alert('Check the console: who are you?'); })()">
+            Run Example 3
+        </button>
+        <div class="result">Outputs: <code>Stranger</code></div>
+    </div>
+
+    <div class="section">
+        <h2>4. Nullish Coalescing (<code>??</code>)</h2>
+        <div class="explain">
+            <b>Syntax:</b> <code>value ?? default</code><br>
+            Returns the left value unless it is <b>null or undefined</b> (only!), otherwise returns the default.
+            <br>Great for handling *real* "missing" data while allowing <code>0</code>, <code>""</code>, or
+            <code>false</code> as valid.
+        </div>
+        <pre><code>
+let highScore = 0;
+let displayScore = highScore ?? "No Score Yet";
+console.log(displayScore); // Outputs: 0 (not defaulted!)
+let unknown;
+let safe = unknown ?? "Safe fallback";
+console.log(safe); // Outputs: "Safe fallback"
+    </code></pre>
+        <button
+            onclick="(function(){ let highScore=0; let displayScore=highScore??'No Score Yet'; console.log('displayScore:',displayScore); let unknown; let safe=unknown??'Safe fallback'; console.log('safe:',safe); alert('Check the console: nullish coalescing in action!'); })()">
+            Run Example 4
+        </button>
+        <div class="result">
+            Outputs: <code>displayScore: 0</code>, <code>safe: Safe fallback</code>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Compare: || vs ??</h2>
+        <div class="explain">
+            <b><code>||</code> treats <u>all falsy</u> values as "default".<br>
+                <code>??</code> only treats <b>null</b> and <b>undefined</b> as "default".</b>
+        </div>
+        <pre><code>
+let inputCatName = "";
+let catNameOr = inputCatName || "Mr. Fluffy";    // "Mr. Fluffy" (because "" is falsy)
+let catNameNull = inputCatName ?? "Mr. Fluffy";  // "" (empty string is valid)
+
+console.log("catNameOr:", catNameOr);
+console.log("catNameNull:", catNameNull);
+    </code></pre>
+        <button
+            onclick="(function(){ let inputCatName=''; let catNameOr=inputCatName||'Mr. Fluffy'; let catNameNull=inputCatName??'Mr. Fluffy'; console.log('catNameOr:',catNameOr); console.log('catNameNull:',catNameNull); alert('Check the console: compare || and ?? for falsy values'); })()">
+            Run Example 5
+        </button>
+        <div class="result">
+            Outputs: <code>catNameOr: Mr. Fluffy</code>, <code>catNameNull: </code>
+        </div>
+    </div>
+
+    <div class="tip">Change the values in each code block and rerun for deeper understanding. Try 0, "", null,
+        undefined, or false!</div>
+</body>
+
+</html>

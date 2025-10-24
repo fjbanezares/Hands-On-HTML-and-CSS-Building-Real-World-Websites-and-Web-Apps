@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        /*
+      ===============================================================
+      CSS SPECIFICITY: A Quick Guide
+      ===============================================================
+
+      Specificity is the "score" the browser calculates to decide which rule wins
+      when multiple CSS rules target the same element.
+
+      The score is often represented as (A, B, C, D):
+      A = Inline Styles (1 if inline, 0 otherwise)
+      B = ID selectors (#id)
+      C = Class selectors (.class), Attribute selectors ([attr="..."]), Pseudo-classes (:hover)
+      D = Element selectors (h1), Pseudo-elements (::before)
+
+      - A rule with a higher score in a "column" (from left to right) wins.
+        (0, 1, 0, 0) beats (0, 0, 9, 9) because B > C.
+      - If scores are equal, the *last rule defined* (the one lower in the file) wins.
+      - `!important` breaks all rules and wins (unless it's fighting another `!important`).
+    */
+
+        /*
+      --------------------------------------------------
+      RULE 1: Element Selector (LOWEST SPECIFICITY)
+      Score: (0, 0, 0, 1) - D=1
+      --------------------------------------------------
+      This is the base style. It applies to ALL <h1> elements
+      but will be overridden by any more specific selector.
+    */
+        h1 {
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+            color: gray;
+        }
+
+        /*
+      --------------------------------------------------
+      RULE 2: Attribute Selector
+      Score: (0, 0, 1, 0) - C=1
+      --------------------------------------------------
+      This score is higher than the 'h1' selector.
+      It will override the 'h1' styles.
+    */
+        [data-header="header"] {
+            font-size: 28px;
+            color: green;
+        }
+
+        /*
+      --------------------------------------------------
+      RULE 3: Class Selector
+      Score: (0, 0, 1, 0) - C=1
+      --------------------------------------------------
+      This has the *same* specificity score as the attribute selector above.
+      Because this rule is defined *after* [data-header="header"],
+      it WINS in a tie-breaker. Elements with *both*
+      `class="main-header"` and `data-header="header"` will use this style.
+    */
+        .main-header {
+            font-size: 30px;
+            color: blue;
+        }
+
+        /*
+      --------------------------------------------------
+      RULE 4: Combined Selector (Element + Class)
+      Score: (0, 0, 1, 1) - C=1, D=1
+      --------------------------------------------------
+      This is MORE specific than just `.main-header` (0,0,1,0)
+      or just `h1` (0,0,0,1). It will override both.
+    */
+        h1.main-header {
+            /* This will override the .main-header rule for h1s */
+            font-size: 32px;
+            color: orange;
+        }
+
+        /*
+      --------------------------------------------------
+      RULE 5: Pseudo-class Selectors
+      Specificity is added to the selector it's attached to.
+      --------------------------------------------------
+    */
+
+        /* Score: (0, 0, 1, 1) -> 1 Element (h1) + 1 Pseudo-class (:hover) */
+        h1:hover {
+            /* This is less specific than the rule below */
+            font-size: 16px;
+            color: pink;
+        }
+
+        /* Score: (0, 0, 2, 1) -> 1 Element(h1) + 1 Class(.main-header) + 1 Pseudo-class(:hover) */
+        /* This is VERY specific and wins over 'h1:hover' */
+        h1.main-header:hover {
+            font-size: 36px;
+            color: skyblue;
+        }
+
+        /*
+      --------------------------------------------------
+      RULE 6: ID Selector (HIGH SPECIFICITY)
+      Score: (0, 1, 0, 0) - B=1
+      --------------------------------------------------
+      An ID selector beats any number of classes, attributes, or elements.
+      Its "B" score is in a higher column.
+    */
+        #header-id {
+            font-size: 40px;
+            color: red;
+        }
+
+        /*
+      --------------------------------------------------
+      RULE 7: Inline Style (HIGHEST SPECIFICITY)
+      Score: (1, 0, 0, 0) - A=1
+      --------------------------------------------------
+      The 'style' attribute on an element beats ALL stylesheet selectors.
+      (See the first <h1> in the HTML body).
+    */
+
+        /*
+      --------------------------------------------------
+      RULE 8: The Exception: !important
+      --------------------------------------------------
+      '!important' breaks all the rules. It's not a measure of specificity,
+      but a declaration that this rule MUST be applied, overriding everything...
+      ...even inline styles!
+    */
+        .whatever {
+            /* This class is on the 5th h1 */
+            color: teal !important;
+            font-size: 12px;
+            /* This font-size is NOT important, so it will be
+                         overridden by the 'h1' element selector's 24px */
+        }
+
+        /*
+      What beats !important?
+      An !important in a *more specific* selector, or an *inline* !important.
+    */
+        #juanito.whatever {
+            /* Score: (0, 1, 1, 0) + !important */
+            /* This beats '.whatever !important' because the selector is more specific */
+            color: purple !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id="pepito" class="main-header" data-header="header" style="font-size: 44px; color: purple;">
+        Inline Style Wins (44px, purple)
+    </h1>
+
+    <h1 id="header-id" class="main-header" data-header="header">
+        ID Selector Wins (40px, red)
+    </h1>
+
+    <h1 id="juanito" class="main-header" data-header="header">
+        Combined Selector Wins (32px, orange)
+    </h1>
+
+    <h1 id="juanito" class="main-header" data-header="chinchin">
+        Class Selector Wins (30px, blue)
+    </h1>
+
+    <h1 id="juanito" class="whatever" data-header="chinchin">
+        !important Wins (24px, purple)
+    </h1>
+
+</body>
+
+</html>
