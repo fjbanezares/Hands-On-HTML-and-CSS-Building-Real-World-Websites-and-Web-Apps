@@ -8,6 +8,56 @@
 </head>
 
 <body>
+<div class="player-box">
+  <h3>Mi canción</h3>
+  <button id="playBtn">▶ Reproducir</button>
+  <audio id="miAudio" src="mi-cancion.mp3"></audio>
+</div>
+
+<style>
+  .player-box {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    width: 200px;
+    padding: 15px;
+    background-color: #418ac6;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    text-align: center;
+    font-family: sans-serif;
+  }
+
+  .player-box button {
+    background-color: #b9d0e9;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .player-box button:hover {
+    background-color: #acccf2;
+  }
+</style>
+
+<script>
+  const audio = document.getElementById('miAudio');
+  const btn = document.getElementById('playBtn');
+
+  btn.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.play();
+      btn.textContent = '⏸ Pausar';
+    } else {
+      audio.pause();
+      btn.textContent = '▶ Reproducir';
+    }
+  });
+</script>
 
 
 </body>
