@@ -14,18 +14,25 @@
             font-family: "Lobster Two", sans-serif;
             font-weight: 400;
             font-style: normal;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            margin:0;
         }
 
         .task-list-container {
-            width: 70%;
             max-width: 600px;
-            margin: 60px auto;
             background: #f8ccff;
-            border-radius: 18px;
             padding: 35px 40px;
             box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
             border: 2px solid #eee;
             animation: fadeInContainer 0.6s ease forwards;
+            position: absolute;
+            width: 30%;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            margin: 10% 0 0 5%;
         }
 
         h2 {
@@ -110,17 +117,18 @@
 </head>
 
 <body>
-
-    <div class="task-list-container">
-        <h2>Lista de Mejoras de la Clase</h2>
-        <ul id="task-list">
-            <li>Snacks gratis</li>
-            <li>Aire acondicionado más inteligente</li>
-            <li>Que no se apaguen las luces automaticamente</li>
-            <li>Cargadores en las mesas</li>
-            <li>Hacer una demo inicial de cada clase</li>
-        </ul>
-        <img src="imagen.jpeg">
+    <div>
+        <div class="task-list-container">
+            <h2>Lista de Mejoras de la Clase</h2>
+            <ul id="task-list">
+                <li>Snacks gratis</li>
+                <li>Aire acondicionado más inteligente</li>
+                <li>Que no se apaguen las luces automaticamente</li>
+                <li>Cargadores en las mesas</li>
+                <li>Hacer una demo inicial de cada clase</li>
+            </ul>
+            <img src="imagen.jpeg">
+        </div>
     </div>
 
     <script>
