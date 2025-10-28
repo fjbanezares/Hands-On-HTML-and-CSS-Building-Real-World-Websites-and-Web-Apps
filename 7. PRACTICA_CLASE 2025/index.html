@@ -7,6 +7,37 @@
     <title>Lista de Mejoras de la Clase 2025</title>
 </head>
 <style>
+    /* Estilos reproductor música */
+   .player-box {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    width: 200px;
+    padding: 15px;
+    background-color: #418ac6;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    text-align: center;
+    font-family: sans-serif;
+  }
+
+  .player-box button {
+    background-color: #b9d0e9;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .player-box button:hover {
+    background-color: #acccf2;
+  }
+  
+    /* Estilos menús */
+  
   :root{
     --bg: rgba(20,23,28,0.75);
     --bg-solid:#14171c;
@@ -177,6 +208,7 @@
 </script>
 
 <body>
+
 <nav class="navbar" role="navigation" aria-label="Barra de navegación principal">
   <div class="nav-wrap">
     <a href="#" class="brand" aria-label="Inicio">
@@ -217,10 +249,30 @@
     </ul>
   </div>
 </nav>
+  
+<div class="player-box">
+  <h3>Mi canción</h3>
+  <button id="playBtn">▶ Reproducir</button>
+  <audio id="miAudio" src="mi-cancion.mp3"></audio>
+</div>
 
-<!-- (Contenido de ejemplo; puedes eliminarlo) -->
-<main>
-b</main>
+
+<script>
+  const audio = document.getElementById('miAudio');
+  const btn = document.getElementById('playBtn');
+
+  btn.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.play();
+      btn.textContent = '⏸ Pausar';
+    } else {
+      audio.pause();
+      btn.textContent = '▶ Reproducir';
+    }
+  });
+</script>
+
+
 
 </body>
 
