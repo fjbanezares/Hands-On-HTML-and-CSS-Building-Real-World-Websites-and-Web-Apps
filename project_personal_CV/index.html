@@ -1,63 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
-    <!-- Metadata for the browser -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Link to the CSS stylesheet -->
+    <title>Iván Benito CV</title>
     <link rel="stylesheet" href="styles-modified.css">
-
-    <!-- Title of the page -->
-    <title>Student CV</title>
 </head>
-
 <body>
-    <!-- Main container for the CV -->
     <div id="cv">
-
-        <!-- Student's name and title -->
         <header>
-            <h1>Jane Doe</h1>
-            <p>Computer Science Student</p>
+            <h1>Iván Benito</h1>
+            <p> Estudiante de Business Analytics</p>
         </header>
 
-        <!-- Contact information -->
         <section id="contact">
-            <h2>Contact Information</h2>
-            <address>
-                <p>Email: janedoe@example.com</p>
-                <p>Phone: +1234567890</p>
-            </address>
+            <h2>Información de Contacto</h2>
+            <div class="contact-info-container">
+                <div class="contact-item">
+                    <a href="mailto:ivanbenitosanchez@gmail.com">ivanbenitosanchez@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <a href="tel:+34644407393">+34 644 40 73 93</a>
+                </div>
+                <div class="contact-item">
+                    <span>Madrid, España</span>
+                </div>
+            </div>
         </section>
 
-        <!-- Education details -->
         <section id="education">
-            <h2>Education</h2>
-            <p>BS in Computer Science, XYZ University, 2023</p>
-        </section>
-
-        <!-- Skills -->
-        <section id="skills">
-            <h2>Skills</h2>
-            <ul>
-                <li>HTML & CSS</li>
-                <li>JavaScript</li>
-                <li>Python</li>
+            <h2>Educación</h2>
+            <ul class="list-education">
+                <li>Máster en Business Analytics, IA & Machine Learning. Universidad UFV. 2025-2026</li>
+                <li>Grado en Administración y Dirección de Empresas. Universidad de Salamanca. 2021-2025</li>
             </ul>
         </section>
 
-        <!-- Experience -->
+        <section id="skills">
+            <h2>Habilidades</h2>
+            <ul class="skills-list">
+                <li>Python</li>
+                <li>SQL</li>
+                <li>Power BI</li>
+                <li>Excel</li>
+                <li>HTML & CSS</li>
+                <li>Inglés B2</li>
+            </ul>
+        </section>
+
         <section id="experience">
-            <h2>Experience</h2>
-            <!-- Each work experience can be an article -->
+            <h2>Experiencia</h2>
             <article>
-                <h3>Intern at ABC Corp</h3>
-                <p>Developed XYZ features.</p>
+                <h3>Monitor de Ocio y Tiempo Libre</h3>
+                <p>Campamentos de ocio y robótica educativa. 2022-Actualidad</p>
+            </article>
+            <article>
+                <h3>Consultor de Marketing Online en Prácticas</h3>
+                <p>Apoyo en campañas digitales y análisis básico en marketing online. Salamanca, 2024</p>
             </article>
         </section>
     </div>
 </body>
-
 </html>
+
+<!-- He cambiando los datos por defecto por mis datos, he añadido algunos div nuevos y clases nuevas para editar el estilo
+ en el archivo css-->

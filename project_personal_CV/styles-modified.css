@@ -1,4 +1,4 @@
-/* Basic reset for consistent styling */
+/* Estilos generales */
 * {
     margin: 0;
     padding: 0;
@@ -6,76 +6,117 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    /* Using Arial font for simplicity */
+    font-family: "Poppins", Arial, sans-serif;
+    background: #f1f4f8;
+    color: #2c2c2c;
     line-height: 1.6;
-    /* Spacing between lines */
 }
 
 #cv {
-    max-width: 800px;
-    /* CV width */
-    margin: 20px auto;
-    /* Center the CV on the page */
-    padding: 20px;
-    border: 1px solid #ddd;
-    /* Border around the CV */
+    max-width: 850px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
 }
 
 header {
     text-align: center;
-    margin-bottom: 20px;
-    /* Space below the header */
+    margin-bottom: 35px;
 }
 
 header h1 {
-    color: #333;
-    /* Dark text color for the name */
-    margin-bottom: 5px;
-    /* Small spacing below the name */
+    font-size: 2.4em;
+    color: #232323;
 }
 
 header p {
-    color: #666;
-    /* Lighter text color for the title */
+    font-size: 1.15em;
+    color: #777;
 }
 
-/* Styling for each section's title */
 h2 {
-    background-color: #f4f4f4;
-    /* Light gray background */
-    padding: 10px;
-    margin-bottom: 15px;
-    /* Space below the title */
+    font-size: 1.4em;
+    color: #1c4ed8;
+    margin-bottom: 20px;
+    margin-top: 30px;
+    border-bottom: 2px solid #1c4ed8;
+    padding-bottom: 5px;
+    text-align: left;
 }
 
-/* Styling for the contact information */
-#contact address p {
-    margin-bottom: 10px;
-    /* Space between each piece of contact info */
+/* Estilos apartado educación */
+.list-education {
+    margin-left: 18px;
 }
 
-/* Styling for the skills list */
-#skills ul {
-    list-style-type: none;
-    /* Remove the default bullet points */
+.list-education li {
+    padding: 6px 0;
 }
 
-#skills li {
-    background-color: #f9f9f9;
-    /* Lighter gray background */
-    padding: 5px;
-    margin-bottom: 5px;
-    /* Space between each skill */
+/* Estilos apartado habilidades */
+.skills-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
 }
 
-/* Styling for each work experience */
+.skills-list li {
+    background: #e7ecf7;
+    padding: 8px;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 500;
+    transition: 0.2s ease;
+}
+
+.skills-list li:hover {
+    background: #1c4ed8;
+    color: #fff;
+    transform: scale(1.05);
+    cursor: default;
+}
+
+/*Estilos apartado contacto*/
+.contact-info-container {
+    display: grid;
+    gap: 12px;
+    max-width: 500px;
+}
+
+.contact-item {
+    padding: 12px 15px;
+    background: #eef2fa;
+    border-radius: 8px;
+    transition: 0.2s ease-in-out;
+}
+
+.contact-item:hover {
+    background: #d8e0f5;
+    transform: translateY(-2px);
+    cursor: default;
+}
+
+.contact-item a,
+.contact-item span {
+    text-decoration: none;
+    color: #1f1f1f;
+    font-size: 1.05em;
+}
+
+/*Estilos apartado experiencia*/
 #experience article {
-    margin-bottom: 15px;
-    /* Space between each work experience */
+    margin-bottom: 18px;
 }
 
 #experience h3 {
-    margin-bottom: 5px;
-    /* Space below the job title */
+    margin-bottom: 4px;
+    font-size: 1.1em;
+    color: #333;
 }
+
+
+/*He cambiado el estilo general del html, cambiando colores, paddings y margenes además de añadir varias animaciones usando :hover
+en el apartado de contacto y en el apartado de habilidades */
