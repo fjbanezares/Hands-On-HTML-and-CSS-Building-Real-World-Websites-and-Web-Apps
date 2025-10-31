@@ -1,12 +1,33 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Mejoras de la Clase 2025</title>
-</head>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        
+
 <style>
+  
+  
+        /* Estilos de ejemplo para el resto de la página */
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        .contenido-principal {
+            padding: 40px;
+            min-height: 50vh; /* Da algo de espacio para ver el scroll */
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+
+        .contenido-principal h1 {
+            color: #333;
+        }
     /* Estilos reproductor música */
    .player-box {
     position: fixed;
@@ -207,7 +228,9 @@
   });
 </script>
 
+</head>
 <body>
+
 
 <nav class="navbar" role="navigation" aria-label="Barra de navegación principal">
   <div class="nav-wrap">
@@ -274,9 +297,371 @@
 
 
 
+  
+   <header style="background: #333; color: white; padding: 1rem; text-align: center;">
+        <nav>
+            Maria y Fran. Formulario y ubicación.
+        </nav>
+    </header>
+    <style>
+        /* * Contenedor principal de la sección. 
+      * Reemplaza los estilos de 'body' del código original.
+      */
+        #mi-seccion-contacto {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+            box-sizing: border-box;
+            /* Asegura un modelo de caja consistente */
+            width: 100%;
+            /* Asegura que ocupe todo el ancho disponible */
+        }
+
+        /* * Aplica un reseteo de 'box-sizing' solo a esta sección 
+      * para no afectar al resto de tu web.
+      */
+        #mi-seccion-contacto *,
+        #mi-seccion-contacto *::before,
+        #mi-seccion-contacto *::after {
+            box-sizing: inherit;
+        }
+
+        /* * Reseteo de márgenes y paddings solo para los elementos
+      * principales de este componente para que se vea bien.
+      */
+        #mi-seccion-contacto .section-title h2,
+        #mi-seccion-contacto .contact-info ul,
+        #mi-seccion-contacto .form-group {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Reseteo de márgenes y paddings de la versión original */
+        #mi-seccion-contacto .container {
+            margin: 0 auto;
+        }
+
+        #mi-seccion-contacto .form-group {
+            margin-bottom: 25px;
+        }
+
+        #mi-seccion-contacto .section-title {
+            margin-bottom: 30px;
+        }
+
+        #mi-seccion-contacto .contact-info li {
+            margin-bottom: 20px;
+        }
+
+        #mi-seccion-contacto .social-icons {
+            margin-top: 30px;
+        }
+
+        #mi-seccion-contacto footer {
+            margin-top: 40px;
+        }
+
+        /* Fin de reseteos */
+
+
+        #mi-seccion-contacto .container {
+            max-width: 1200px;
+            /* margin: 0 auto; (definido arriba) */
+        }
+
+        #mi-seccion-contacto .contact-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        #mi-seccion-contacto .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            /* margin-bottom: 30px; (definido arriba) */
+        }
+
+        #mi-seccion-contacto .section-title h2 {
+            font-size: 28px;
+            color: #2d3748;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        #mi-seccion-contacto .section-title span {
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+            margin-bottom: 15px;
+        }
+
+        #mi-seccion-contacto .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #mi-seccion-contacto .col-left,
+        #mi-seccion-contacto .col-right {
+            flex: 1;
+            min-width: 300px;
+            padding: 50px;
+        }
+
+        #mi-seccion-contacto .col-left {
+            background: #ffffff;
+        }
+
+        #mi-seccion-contacto .col-right {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        #mi-seccion-contacto .col-right .section-title h2 {
+            color: white;
+        }
+
+        #mi-seccion-contacto .col-right .section-title span {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        #mi-seccion-contacto .site-form .form-group {
+            /* margin-bottom: 25px; (definido arriba) */
+        }
+
+        #mi-seccion-contacto .site-input,
+        #mi-seccion-contacto .site-area {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background: #f7fafc;
+            color: #2d3748;
+            font-family: inherit;
+        }
+
+        #mi-seccion-contacto .site-input:focus,
+        #mi-seccion-contacto .site-area:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        #mi-seccion-contacto .site-area {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        #mi-seccion-contacto .site-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        #mi-seccion-contacto .site-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        #mi-seccion-contacto .site-btn:active {
+            transform: translateY(0);
+        }
+
+        #mi-seccion-contacto .contact-info ul {
+            list-style: none;
+        }
+
+        #mi-seccion-contacto .contact-info li {
+            /* margin-bottom: 20px; (definido arriba) */
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        #mi-seccion-contacto .contact-info li i {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 18px;
+        }
+
+        #mi-seccion-contacto .contact-info li span {
+            font-weight: 600;
+            margin-right: 10px;
+            opacity: 0.9;
+        }
+
+        #mi-seccion-contacto .social-icons {
+            display: flex;
+            gap: 15px;
+            /* margin-top: 30px; (definido arriba) */
+        }
+
+        #mi-seccion-contacto .social-icons a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 20px;
+        }
+
+        #mi-seccion-contacto .social-icons a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        #mi-seccion-contacto .map-section {
+            padding: 50px;
+            background: #f7fafc;
+        }
+
+        #mi-seccion-contacto .map-section iframe {
+            width: 100%;
+            height: 450px;
+            border-radius: 15px;
+            border: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        #mi-seccion-contacto footer {
+            text-align: center;
+            padding: 30px;
+            color: white;
+            /* margin-top: 40px; (definido arriba) */
+        }
+
+        #mi-seccion-contacto footer .name {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        #mi-seccion-contacto footer .copyright {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+
+            #mi-seccion-contacto .col-left,
+            #mi-seccion-contacto .col-right {
+                padding: 30px;
+            }
+
+            #mi-seccion-contacto .map-section {
+                padding: 30px;
+            }
+
+            #mi-seccion-contacto .section-title h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+
+    <section id="mi-seccion-contacto">
+
+        <div class="container">
+            <div class="contact-section">
+                <div class="row">
+                    <div class="col-left">
+                        <div class="section-title">
+                            <span></span>
+                            <h2>Ruegos y sugerencias</h2>
+                        </div>
+                        <form class="site-form">
+                            <div class="form-group">
+                                <input class="site-input" type="text" placeholder="Nombre" required>
+                            </div>
+                            <div class="form-group">
+                                <input class="site-input" type="email" placeholder="E-mail" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="site-area" placeholder="Mensaje" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <button class="site-btn" type="submit">Enviar Mensaje</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="col-right contact-info">
+                        <div class="section-title">
+                            <span></span>
+                            <h2>Contacto</h2>
+                        </div>
+                        <ul>
+                            <li>
+                                <i class="fas fa-phone"></i>
+                                <div><span>Número:</span> </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-briefcase"></i>
+                                <div><span>Asignatura</span> Arquitectura del Big Data y Cloud </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <div><span>E-mail:</span> </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-globe"></i>
+                                <div><span>Web:</span> </div>
+                            </li>
+                        </ul>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.ufv.es/"><i class="fab fa-dribbble"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="map-section">
+                    <div class="section-title">
+                        <span></span>
+                        <h2>Ubicación</h2>
+                    </div>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3036.6023026342236!2d-3.8366225251992105!3d40.439804354236664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4185d02b000001%3A0x9b035d2695ce702c!2sUniversidad%20Francisco%20de%20Vitoria.%20Universidad%20Privada%20en%20Madrid.!5e0!3m2!1ses!2ses!4v1761588885591!5m2!1ses!2ses"
+                        allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+
+            <footer>
+                <div class="name">Master en Business Analytics, IA y ML 25/26</div>
+                <div class="copyright">© 2025 Todos los derechos reservados.</div>
+            </footer>
+        </div>
+
+    </section>
+  
 </body>
-
-
-
-
 </html>
