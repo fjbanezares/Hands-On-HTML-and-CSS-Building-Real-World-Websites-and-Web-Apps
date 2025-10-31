@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Mejoras de la Clase 2025</title>
-</head>
+
 <style>
     /* Estilos reproductor música */
    .player-box {
@@ -170,46 +170,139 @@
   }
   .btn-cta:hover{ transform: translateY(-1px); }
 </style>
-<script>
-  // Toggle del menú móvil
-  const burger = document.getElementById('burger');
-  const menu = document.getElementById('menu');
+  
+  
 
-  burger.addEventListener('click', () => {
-    const open = menu.classList.toggle('open');
-    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
 
-  // Soporte para desplegables en click/teclado (móvil y accesible)
-  document.querySelectorAll('.has-dropdown').forEach(item => {
-    const toggle = item.querySelector('.dropdown-toggle');
-    toggle.addEventListener('click', (e) => {
-      e.preventDefault();
-      // Cierra otros en móvil
-      document.querySelectorAll('.has-dropdown.open').forEach(i => { if(i!==item) i.classList.remove('open'); });
-      item.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', item.classList.contains('open') ? 'true' : 'false');
-    });
-  });
 
-  // Cerrar menús al hacer click fuera (móvil)
-  document.addEventListener('click', (e) => {
-    const openDrop = document.querySelector('.has-dropdown.open');
-    if(openDrop && !openDrop.contains(e.target) && !e.target.closest('.dropdown-toggle')){
-      openDrop.classList.remove('open');
-      openDrop.querySelector('.dropdown-toggle').setAttribute('aria-expanded','false');
-    }
-  });
+    <!-- Google Font Lobster Two -->
+    <link href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 
-  // Cerrar el panel móvil al navegar
-  menu.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => menu.classList.remove('open'));
-  });
-</script>
+
+    <style>
+        body {
+            font-family: "Lobster Two", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            margin:0;
+        }
+
+
+
+
+
+
+
+
+
+        .task-list-container {
+            max-width: 600px;
+            background: #f8ccff;
+            padding: 35px 40px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
+            border: 2px solid #eee;
+            animation: fadeInContainer 0.6s ease forwards;
+            position: absolute;
+            width: 30%;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            margin: 10% 0 0 5%;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: #5320f5;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 400;
+            position: relative;
+        }
+
+        h2::after {
+            content: "";
+            width: 80px;
+            height: 4px;
+            border-radius: 2px;
+            background: #5320f5;
+            position: absolute;
+            left: 50%;
+            bottom: -12px;
+            transform: translateX(-50%);
+        }
+
+        #task-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        #task-list li {
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 18px;
+            margin: 14px 0;
+            background: #f7f5ff;
+            border-radius: 12px;
+            border: 1px solid #e4ddff;
+            cursor: pointer;
+            transition: transform 0.2s ease, background 0.3s ease;
+        }
+
+        #task-list li:hover {
+            background: #ece4ff;
+            transform: translateX(6px);
+        }
+
+        #task-list li::before {
+            content: "🟣";
+            font-size: 1.3rem;
+        }
+
+        #task-list li.done {
+            background: #dbffe7;
+            border-color: #23c76a;
+            text-decoration: line-through;
+            color: #2c2c2c;
+        }
+
+        #task-list li.done::before {
+            content: "✅";
+        }
+
+        @keyframes fadeInContainer {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .task-list-container img {
+            max-width: 90%;
+            height: auto;
+            display: block;
+            margin:auto;
+        }
+    </style>
+
+</head>
 
 <body>
-
-<nav class="navbar" role="navigation" aria-label="Barra de navegación principal">
+    
+<div class="player-box">
+  <h3>Mi canción</h3>
+  <button id="playBtn">▶ Reproducir</button>
+  <audio id="miAudio" src="mi-cancion.mp3"></audio>
+</div>
+  
+  <nav class="navbar" role="navigation" aria-label="Barra de navegación principal">
   <div class="nav-wrap">
     <a href="#" class="brand" aria-label="Inicio">
       <span class="logo" aria-hidden="true"></span>
@@ -249,14 +342,56 @@
     </ul>
   </div>
 </nav>
+    <div>
+        <div class="task-list-container">
+            <h2>Lista de Mejoras de la Clase</h2>
+            <ul id="task-list">
+                <li>Snacks gratis</li>
+                <li>Aire acondicionado más inteligente</li>
+                <li>Que no se apaguen las luces automaticamente</li>
+                <li>Cargadores en las mesas</li>
+                <li>Hacer una demo inicial de cada clase</li>
+            </ul>
+            <img src="imagen.jpeg">
+        </div>
+    </div>
   
-<div class="player-box">
-  <h3>Mi canción</h3>
-  <button id="playBtn">▶ Reproducir</button>
-  <audio id="miAudio" src="mi-cancion.mp3"></audio>
-</div>
+  <script>
+  // Toggle del menú móvil
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('menu');
 
+  burger.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
 
+  // Soporte para desplegables en click/teclado (móvil y accesible)
+  document.querySelectorAll('.has-dropdown').forEach(item => {
+    const toggle = item.querySelector('.dropdown-toggle');
+    toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      // Cierra otros en móvil
+      document.querySelectorAll('.has-dropdown.open').forEach(i => { if(i!==item) i.classList.remove('open'); });
+      item.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', item.classList.contains('open') ? 'true' : 'false');
+    });
+  });
+
+  // Cerrar menús al hacer click fuera (móvil)
+  document.addEventListener('click', (e) => {
+    const openDrop = document.querySelector('.has-dropdown.open');
+    if(openDrop && !openDrop.contains(e.target) && !e.target.closest('.dropdown-toggle')){
+      openDrop.classList.remove('open');
+      openDrop.querySelector('.dropdown-toggle').setAttribute('aria-expanded','false');
+    }
+  });
+
+  // Cerrar el panel móvil al navegar
+  menu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => menu.classList.remove('open'));
+  });
+</script>
 <script>
   const audio = document.getElementById('miAudio');
   const btn = document.getElementById('playBtn');
@@ -272,11 +407,14 @@
   });
 </script>
 
-
+    <script>
+        document.querySelectorAll("#task-list li").forEach(item => {
+            item.addEventListener("click", () => {
+                item.classList.toggle("done");
+            });
+        });
+    </script>
 
 </body>
-
-
-
 
 </html>
