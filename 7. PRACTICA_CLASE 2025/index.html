@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Mejoras de la Clase 2025</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-        <style>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        
+
+<style>
+  
+  
         /* Estilos de ejemplo para el resto de la página */
         body {
             margin: 0;
@@ -23,12 +28,277 @@
         .contenido-principal h1 {
             color: #333;
         }
-    </style>
+    /* Estilos reproductor música */
+   .player-box {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    width: 200px;
+    padding: 15px;
+    background-color: #418ac6;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    text-align: center;
+    font-family: sans-serif;
+  }
+
+  .player-box button {
+    background-color: #b9d0e9;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .player-box button:hover {
+    background-color: #acccf2;
+  }
+  
+    /* Estilos menús */
+  
+  :root{
+    --bg: rgba(20,23,28,0.75);
+    --bg-solid:#14171c;
+    --text:#e8eaf0;
+    --muted:#a9b0be;
+    --accent:#6aa8ff;
+    --hover: rgba(255,255,255,0.08);
+    --ring: 0 0 0 3px rgba(106,168,255,.35);
+    --shadow: 0 10px 30px rgba(0,0,0,.25);
+    --radius: 14px;
+    --nav-h: 64px;
+  }
+
+  /* Reset suave */
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+    color: var(--text);
+    background: #0e1116;
+    line-height: 1.5;
+  }
+
+  /* ====== NAVBAR ====== */
+  .navbar{
+    position: fixed; inset: 0 0 auto 0; height: var(--nav-h);
+    top: 0;
+    left: 0;
+    display:flex; align-items:center;
+    backdrop-filter: blur(10px);
+    background: var(--bg);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    z-index: 1000;
+  }
+  .nav-wrap{
+    max-width: 1100px; margin: 0 auto; padding: 0 8px;
+    width:100%; display:flex; align-items:center; gap:16px;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px; text-decoration:none;
+    color: var(--text); font-weight: 700; letter-spacing:.2px;
+  }
+  .brand .logo{
+    width: 34px; height:34px; border-radius: 10px;
+    background: linear-gradient(135deg, #6aa8ff, #8b6aff);
+    box-shadow: var(--shadow);
+  }
+
+  /* Links */
+  .nav-links{
+    margin-left:auto; display:flex; align-items:center; gap:6px;
+  }
+  .nav-link, .dropdown-toggle{
+    display:flex; align-items:center; gap:8px;
+    height:40px; padding: 0 12px; border-radius: 10px;
+    text-decoration: none; font-weight: 500;
+    background: linear-gradient(135deg, #6aa8ff, #8b6aff);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 10px rgba(106,168,255,0.3);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.nav-links > li { list-style: none; position:relative; }
+.nav-link:hover, .dropdown-toggle:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(106,168,255,0.4);
+  }
+  .nav-link:hover, .dropdown-toggle:hover{ background: var(--hover); }
+  .nav-link:focus-visible, .dropdown-toggle:focus-visible{ outline: none; box-shadow: var(--ring); }
+
+  /* Dropdown */
+  .has-dropdown { position:relative; }
+  .chev{ font-size: 14px; opacity:.8; transition: transform .15s ease; }
+  .dropdown{
+    position:absolute; top: calc(100% + 10px); left: 0; min-width: 240px;
+    padding: 8px; border-radius: var(--radius);
+    background: var(--bg-solid);
+    border: 1px solid rgba(255,255,255,.08);
+    box-shadow: var(--shadow);
+    opacity:0; visibility:hidden; transform: translateY(-6px);
+    transition: opacity .15s ease, transform .15s ease, visibility .15s;
+  }
+  .dropdown a{
+    display:flex; flex-direction:column; gap:2px;
+    padding:10px; border-radius: 10px; text-decoration:none;
+    color: var(--text);
+  }
+  .dropdown a span{ font-size:12px; color: var(--muted); }
+  .dropdown a:hover{ background: var(--hover); }
+  /* Mostrar en hover (desktop) y cuando tenga la clase .open (móvil/teclado) */
+  .has-dropdown:hover .dropdown,
+  .has-dropdown:focus-within .dropdown,
+  .has-dropdown.open .dropdown{
+    opacity:1; visibility:visible; transform: translateY(0);
+  }
+  .has-dropdown.open .chev{ transform: rotate(180deg); }
+
+  /* Botón hamburguesa (móvil) */
+  .burger{
+    display:none; margin-left:auto;
+    width:38px; height:38px; border-radius: 10px;
+    border:1px solid rgba(255,255,255,.12);
+    background: transparent; color: var(--text);
+  }
+  .burger:focus-visible{ outline:none; box-shadow: var(--ring); }
+
+  /* Menú móvil */
+  @media (max-width: 820px){
+    .burger{ display:block; }
+    .nav-links{
+      position: fixed; top: var(--nav-h); left:0; right:0;
+      display: grid; gap:6px; padding: 12px;
+      background: var(--bg-solid);
+      border-bottom:1px solid rgba(255,255,255,.08);
+      transform-origin: top; transform: scaleY(0);
+      opacity:0; visibility:hidden;
+      transition: transform .18s ease, opacity .18s ease, visibility .18s;
+    }
+    .nav-links.open{ transform: scaleY(1); opacity:1; visibility:visible; }
+    .dropdown{ position:static; transform:none; visibility:visible; opacity:1; box-shadow:none; border:none; padding:6px 0 0; background: transparent; }
+  }
+
+  /* Espaciado del contenido para no quedar debajo del nav fijo */
+  main{ padding: 24px 16px; max-width: 1100px; margin: calc(var(--nav-h) + 12px) auto 64px; }
+  .btn-cta{
+    background: linear-gradient(135deg, #6aa8ff, #8b6aff);
+    color:white; padding: 0 14px; height:40px; display:inline-flex; align-items:center; gap:8px;
+    border-radius: 12px; text-decoration:none; font-weight: 600; border: none;
+    box-shadow: var(--shadow);
+  }
+  .btn-cta:hover{ transform: translateY(-1px); }
+</style>
+<script>
+  // Toggle del menú móvil
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('menu');
+
+  burger.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  // Soporte para desplegables en click/teclado (móvil y accesible)
+  document.querySelectorAll('.has-dropdown').forEach(item => {
+    const toggle = item.querySelector('.dropdown-toggle');
+    toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      // Cierra otros en móvil
+      document.querySelectorAll('.has-dropdown.open').forEach(i => { if(i!==item) i.classList.remove('open'); });
+      item.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', item.classList.contains('open') ? 'true' : 'false');
+    });
+  });
+
+  // Cerrar menús al hacer click fuera (móvil)
+  document.addEventListener('click', (e) => {
+    const openDrop = document.querySelector('.has-dropdown.open');
+    if(openDrop && !openDrop.contains(e.target) && !e.target.closest('.dropdown-toggle')){
+      openDrop.classList.remove('open');
+      openDrop.querySelector('.dropdown-toggle').setAttribute('aria-expanded','false');
+    }
+  });
+
+  // Cerrar el panel móvil al navegar
+  menu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => menu.classList.remove('open'));
+  });
+</script>
 
 </head>
 <body>
 
-    <header style="background: #333; color: white; padding: 1rem; text-align: center;">
+
+<nav class="navbar" role="navigation" aria-label="Barra de navegación principal">
+  <div class="nav-wrap">
+    <a href="#" class="brand" aria-label="Inicio">
+      <span class="logo" aria-hidden="true"></span>
+      <span>Clase 2025</span>
+    </a>
+
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="menu">
+      ☰
+    </button>
+
+    <ul class="nav-links" id="menu">
+      <li><a class="nav-link" href="#inicio">Inicio</a></li>
+
+      <li class="has-dropdown">
+        <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          Mejoras <span class="chev">▾</span>
+        </button>
+        <div class="dropdown" role="menu">
+          <a href="#infra">Infraestructura <span>Salas, proyector, sonido…</span></a>
+          <a href="#metod">Metodología <span>Evaluación, prácticas, feedback</span></a>
+          <a href="#recursos">Recursos <span>Guías, plantillas y enlaces</span></a>
+        </div>
+      </li>
+
+      <li class="has-dropdown">
+        <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          Equipo <span class="chev">▾</span>
+        </button>
+        <div class="dropdown" role="menu">
+          <a href="#prof">Profesorado <span>Contacto y horarios</span></a>
+          <a href="#deleg">Delegados <span>Funciones y calendario</span></a>
+        </div>
+      </li>
+
+      <li><a class="nav-link" href="#calendario">Calendario</a></li>
+      <li><a class="btn-cta" href="#proponer">+ Proponer mejora</a></li>
+    </ul>
+  </div>
+</nav>
+  
+<div class="player-box">
+  <h3>Mi canción</h3>
+  <button id="playBtn">▶ Reproducir</button>
+  <audio id="miAudio" src="mi-cancion.mp3"></audio>
+</div>
+
+
+<script>
+  const audio = document.getElementById('miAudio');
+  const btn = document.getElementById('playBtn');
+
+  btn.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.play();
+      btn.textContent = '⏸ Pausar';
+    } else {
+      audio.pause();
+      btn.textContent = '▶ Reproducir';
+    }
+  });
+</script>
+
+
+
+  
+   <header style="background: #333; color: white; padding: 1rem; text-align: center;">
         <nav>
             Maria y Fran. Formulario y ubicación.
         </nav>
@@ -392,9 +662,6 @@
         </div>
 
     </section>
-    </body>
-
-</html>
+  
 </body>
-<style>
 </html>
