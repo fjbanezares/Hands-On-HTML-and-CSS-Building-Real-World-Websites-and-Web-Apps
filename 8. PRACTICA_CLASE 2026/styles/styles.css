@@ -1,0 +1,211 @@
+/* ============================================================== */
+/* ESTILOS GLOBALES COMPARTIDOS (NO MODIFICAR POR LOS EQUIPOS)    */
+/* ============================================================== */
+
+/* Reseteo universal del modelo de caja */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #0b0f19;
+    color: #e2e8f0;
+    line-height: 1.6;
+    /* TRUCO DE ORO: Altura mínima 100vh y flexbox para empujar el footer abajo */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ============================================================== */
+/* ESTRUCTURA DEL CONTENIDO CENTRAL EN 2 COLUMNAS                 */
+/* ============================================================== */
+.contenedor-principal {
+    flex: 1;                  /* Toma todo el espacio disponible entre header y footer */
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    margin: 90px auto 40px auto; /* 90px arriba para no ser tapado por el menú fixed */
+    padding: 0 20px;
+    gap: 30px;
+}
+
+/* Las dos columnas ocupan 50% cada una por defecto */
+.columna {
+    flex: 1;
+    min-width: 0;             /* Previene desbordamiento en flexbox */
+}
+
+/* Placeholder inicial para los equipos */
+.panel-placeholder {
+    background: #161f30;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.panel-placeholder h2 {
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+.aviso-equipo {
+    margin-top: 20px;
+    padding: 12px;
+    background: rgba(59, 130, 246, 0.1);
+    border-left: 4px solid #3b82f6;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    color: #93c5fd;
+}
+
+/* ============================================================== */
+/* ZONA EQUIPO 1: HEADER / MENÚ SUPERIOR                          */
+/* Todo el CSS del Equipo 1 debe comenzar con #equipo-header      */
+/* ============================================================== */
+#equipo-header {
+    position: fixed;         /* Fijo en la pantalla durante el scroll */
+    top: 0;
+    left: 0;
+    width: 100%;             /* 100% de ancho */
+    height: 70px;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    z-index: 1000;           /* Máxima prioridad de capa */
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+}
+
+#equipo-header .navbar-demo {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#equipo-header .logo {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+#equipo-header .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+#equipo-header .nav-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+#equipo-header .nav-links a:hover {
+    color: #ffffff;
+    background: rgba(59, 130, 246, 0.2);
+}
+
+
+/* ============================================================== */
+/* ZONA EQUIPO 4: COLUMNA IZQUIERDA (ASPECTOS A MEJORAR)          */
+/* Todo el CSS del Equipo 4 debe comenzar con #equipo-izquierda   */
+/* ============================================================== */
+#equipo-izquierda {
+    /* Escribe aquí los estilos específicos para tu columna */
+}
+
+
+/* ============================================================== */
+/* ZONA EQUIPO 3: COLUMNA DERECHA (FOTO + MÚSICA)                */
+/* Todo el CSS del Equipo 3 debe comenzar con #equipo-derecha     */
+/* ============================================================== */
+#equipo-derecha {
+    /* Escribe aquí los estilos específicos para tu columna */
+}
+
+/* Estilo base para el botón de música del Equipo 3 */
+#equipo-derecha .btn-musica {
+    margin-top: 15px;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#equipo-derecha .btn-musica:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+}
+
+#equipo-derecha .btn-musica.reproduciendo {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+
+/* ============================================================== */
+/* ZONA EQUIPO 2: FOOTER (PIE DE PÁGINA AL 100%)                  */
+/* Todo el CSS del Equipo 2 debe comenzar con #equipo-footer      */
+/* ============================================================== */
+#equipo-footer {
+    width: 100%;             /* 100% del ancho */
+    margin-top: auto;        /* Se ancla automáticamente al fondo */
+    background: #070a12;
+    color: #64748b;
+    padding: 30px 20px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+#equipo-footer .footer-contenido {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+#equipo-footer .creditos {
+    color: #cbd5e1;
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+}
+
+#equipo-footer .equipo-nombres {
+    font-size: 0.85rem;
+}
+
+
+/* ============================================================== */
+/* RESPONSIVIDAD (Móviles y Tablets)                              */
+/* ============================================================== */
+@media (max-width: 768px) {
+    .contenedor-principal {
+        flex-direction: column; /* Pasa de 2 columnas a 1 columna vertical */
+        margin-top: 80px;
+    }
+
+    #equipo-header .nav-links {
+        display: none; /* Simplificado para móviles */
+    }
+}

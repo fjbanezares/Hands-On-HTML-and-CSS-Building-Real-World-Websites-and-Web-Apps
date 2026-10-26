@@ -1,0 +1,417 @@
+<!-- 
+  =============================================================================
+  CÓDIGO LISTO PARA PEGAR EN CANVAS LMS (HTML EDITOR)
+  Instrucciones para el profesor:
+  1. En Canvas, crea o edita la Tarea o Página.
+  2. En el editor de texto enriquecido, pulsa el botón "</>" (Cambiar al editor HTML).
+  3. Pega todo el contenido de este archivo y guarda.
+  =============================================================================
+-->
+
+<div style="max-width: 950px; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #2d3748; line-height: 1.6;">
+
+  <!-- HERO / ENCABEZADO PRINCIPAL -->
+  <div style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); color: #ffffff; padding: 35px 30px; border-radius: 14px; box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3); margin-bottom: 30px;">
+    <div style="display: inline-block; background: rgba(255, 255, 255, 0.2); padding: 5px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 12px;">
+      Práctica Guiada • UFV 2026
+    </div>
+    <h1 style="color: #ffffff; margin: 0 0 12px 0; font-size: 28px; font-weight: 800; line-height: 1.2;">
+      🚀 Mi Primer CV Web, Control de Versiones con Git y Despliegue en GitHub Pages
+    </h1>
+    <p style="color: #e0e7ff; margin: 0; font-size: 15px; max-width: 800px;">
+      Aprende el flujo de trabajo estándar en la industria del software: bifurcación (forking), control de versiones en equipo, maquetación con HTML5 y CSS3, y publicación en la nube.
+    </p>
+
+    <!-- METADATOS EN PÍLDORAS -->
+    <div style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px;">
+      <span style="background: rgba(255, 255, 255, 0.15); padding: 6px 12px; border-radius: 8px; font-size: 13px;">🏛️ <strong>Univ.:</strong> Francisco de Vitoria</span>
+      <span style="background: rgba(255, 255, 255, 0.15); padding: 6px 12px; border-radius: 8px; font-size: 13px;">💻 <strong>Entorno:</strong> Antigravity IDE & Git Bash</span>
+      <span style="background: rgba(255, 255, 255, 0.15); padding: 6px 12px; border-radius: 8px; font-size: 13px;">⏱️ <strong>Entrega:</strong> URL Pages + Repo + Vídeo 1 min</span>
+    </div>
+  </div>
+
+  <!-- TARJETA: OBJETIVOS -->
+  <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 22px 25px; margin-bottom: 25px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+    <h2 style="margin: 0 0 14px 0; color: #1e293b; font-size: 18px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+      <span>🎯</span> Objetivos de la Práctica
+    </h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+      <div style="background: #f8fafc; border-left: 4px solid #3b82f6; padding: 10px 14px; border-radius: 0 8px 8px 0; font-size: 14px;">
+        ✅ Comprender y ejecutar el flujo de <strong>Forking</strong> y <strong>Clonado</strong>.
+      </div>
+      <div style="background: #f8fafc; border-left: 4px solid #10b981; padding: 10px 14px; border-radius: 0 8px 8px 0; font-size: 14px;">
+        ✅ Dominar el ciclo: <strong>Ramas, Status, Add, Commit, Revert y Log</strong>.
+      </div>
+      <div style="background: #f8fafc; border-left: 4px solid #f59e0b; padding: 10px 14px; border-radius: 0 8px 8px 0; font-size: 14px;">
+        ✅ Comprender la <strong>especificidad CSS</strong> (ID vs Class vs Tag) y el uso de <code>!important</code>.
+      </div>
+      <div style="background: #f8fafc; border-left: 4px solid #8b5cf6; padding: 10px 14px; border-radius: 0 8px 8px 0; font-size: 14px;">
+        ✅ Maquetar tu CV con <strong>posicionamiento CSS</strong> y publicarlo con <strong>GitHub Pages</strong>.
+      </div>
+    </div>
+  </div>
+
+  <!-- AVISO / CALLOUT DE REQUISITOS -->
+  <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-left: 5px solid #2563eb; border-radius: 8px; padding: 15px 20px; margin-bottom: 30px;">
+    <strong style="color: #1e40af; font-size: 15px;">⚙️ Requisitos previos obligatorios:</strong>
+    <p style="margin: 6px 0 0 0; color: #1e3a8a; font-size: 14px;">
+      Asegúrate de tener instalado <strong>Git</strong> (en Windows se usará <strong>Git Bash</strong>) y tener abierto tu proyecto en el <strong>IDE Antigravity</strong>.
+    </p>
+  </div>
+
+  <!-- PASO 1 -->
+  <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+      <span style="background: #2563eb; color: #ffffff; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px;">1</span>
+      <h3 style="margin: 0; color: #0f172a; font-size: 18px; font-weight: 700;">Crear Cuenta en GitHub</h3>
+    </div>
+    <p style="margin: 0 0 10px 0; font-size: 14px; color: #475569;">
+      Si aún no tienes una cuenta personal en GitHub, accede a <a href="https://github.com/" target="_blank" style="color: #2563eb; font-weight: 600; text-decoration: underline;">github.com</a>, regístrate de forma gratuita y valida tu dirección de correo electrónico.
+    </p>
+  </div>
+
+  <!-- PASO 2 -->
+  <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+      <span style="background: #2563eb; color: #ffffff; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px;">2</span>
+      <h3 style="margin: 0; color: #0f172a; font-size: 18px; font-weight: 700;">Hacer un Fork del Repositorio del Profesor</h3>
+    </div>
+    
+    <div style="background: #f1f5f9; border-left: 4px solid #64748b; padding: 12px 16px; border-radius: 0 6px 6px 0; margin-bottom: 15px; font-size: 14px; color: #334155;">
+      💡 <strong>¿Qué es un Fork y por qué es indispensable?</strong><br>
+      Un <em>Fork</em> crea una copia exacta de este repositorio en tu propia cuenta de GitHub. Como no tienes permisos de escritura directa en el repositorio del profesor, el fork te otorga tu propio entorno seguro para experimentar, romper código, crear ramas y desplegar en GitHub Pages sin interferir con el resto de compañeros.
+    </div>
+
+    <p style="font-size: 14px; margin-bottom: 10px;"><strong>Instrucciones:</strong></p>
+    <ol style="margin: 0 0 12px 20px; font-size: 14px; color: #334155; padding: 0;">
+      <li style="margin-bottom: 6px;">Entra en el repositorio original: <br>
+        <a href="https://github.com/fjbanezares/Hands-On-HTML-and-CSS-Building-Real-World-Websites-and-Web-Apps" target="_blank" style="display: inline-block; background: #f8fafc; border: 1px solid #cbd5e1; padding: 4px 10px; border-radius: 6px; color: #0369a1; text-decoration: none; font-weight: 600; margin-top: 4px;">
+          🔗 https://github.com/fjbanezares/Hands-On-HTML-and-CSS-Building-Real-World-Websites-and-Web-Apps
+        </a>
+      </li>
+      <li style="margin-bottom: 6px;">Arriba a la derecha, haz clic en el botón <strong>Fork</strong>.</li>
+      <li>Verifica que el propietario seas tú y pulsa en <strong>Create Fork</strong>.</li>
+    </ol>
+  </div>
+
+  <!-- PASO 3 -->
+  <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+      <span style="background: #2563eb; color: #ffffff; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px;">3</span>
+      <h3 style="margin: 0; color: #0f172a; font-size: 18px; font-weight: 700;">Clonar tu Fork en Local con <code>git clone</code></h3>
+    </div>
+
+    <p style="font-size: 14px; color: #475569; margin-bottom: 12px;">
+      <code>git clone</code> descarga los archivos y todo el historial de commits desde GitHub hacia tu ordenador local y configura la conexión remota con el alias <code>origin</code>.
+    </p>
+
+    <div style="background: #0f172a; color: #f8fafc; padding: 14px 18px; border-radius: 8px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 13px; line-height: 1.5; margin-bottom: 10px;">
+      <span style="color: #64748b;"># Abre Git Bash o tu Terminal y navega a tu carpeta de trabajo:</span><br>
+      <span style="color: #38bdf8;">git clone</span> https://github.com/<span style="color: #facc15;">TU_USUARIO</span>/Hands-On-HTML-and-CSS-Building-Real-World-Websites-and-Web-Apps.git<br><br>
+      <span style="color: #64748b;"># Entra en la carpeta del repositorio:</span><br>
+      <span style="color: #38bdf8;">cd</span> Hands-On-HTML-and-CSS-Building-Real-World-Websites-and-Web-Apps
+    </div>
+    <p style="font-size: 13px; color: #64748b; margin: 0;">👉 <em>Abre esta carpeta en tu <strong>Antigravity IDE</strong>.</em></p>
+  </div>
+
+  <!-- PASO 4 -->
+  <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+      <span style="background: #2563eb; color: #ffffff; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px;">4</span>
+      <h3 style="margin: 0; color: #0f172a; font-size: 18px; font-weight: 700;">Crear tu Rama de Trabajo (`git branch` / `git checkout`)</h3>
+    </div>
+
+    <p style="font-size: 14px; color: #475569; margin-bottom: 12px;">
+      Una <strong>rama (branch)</strong> representa un espacio de trabajo aislado. Permite modificar código sin poner en riesgo la rama principal (<code>main</code>).
+    </p>
+
+    <div style="background: #0f172a; color: #f8fafc; padding: 14px 18px; border-radius: 8px; font-family: monospace; font-size: 13px; line-height: 1.5; margin-bottom: 12px;">
+      <span style="color: #64748b;"># Crea y muévete a tu nueva rama (sustituye xxx por tus iniciales o nombre):</span><br>
+      <span style="color: #38bdf8;">git checkout -b</span> branch_alumno_xxx<br><br>
+      <span style="color: #64748b;"># Verifica que estás en ella (aparecerá con asterisco verde):</span><br>
+      <span style="color: #38bdf8;">git branch</span>
+    </div>
+  </div>
+
+  <!-- PASO 5 -->
+  <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+      <span style="background: #2563eb; color: #ffffff; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px;">5</span>
+      <h3 style="margin: 0; color: #0f172a; font-size: 18px; font-weight: 700;">Fundamentos Web: HTML, Especificidad CSS y la Regla `!important`</h3>
+    </div>
+
+    <!-- TABLA DE ESPECIFICIDAD -->
+    <table style="width: 100%; border-collapse: collapse; margin-bottom: 18px; font-size: 13px;">
+      <thead>
+        <tr style="background: #f1f5f9; text-align: left; color: #334155;">
+          <th style="padding: 10px; border: 1px solid #cbd5e1;">Nivel / Selector</th>
+          <th style="padding: 10px; border: 1px solid #cbd5e1;">Ejemplo</th>
+          <th style="padding: 10px; border: 1px solid #cbd5e1;">Prioridad Relativa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: 600;">Estilo en línea (Inline)</td>
+          <td style="padding: 10px; border: 1px solid #e2e8f0;"><code>style="color: red;"</code></td>
+          <td style="padding: 10px; border: 1px solid #e2e8f0; color: #dc2626; font-weight: bold;">Muy Alta (1000)</td>
+        </tr>
+        <tr style="background: #f8fafc;">
+          <td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: 600;">Selector de ID</td>
+          <td style="padding: 10px; border: 1px solid #e2e8f0;"><code>#header-id { ... }</code></td>
+          <td style="padding: 10px; border: 1px solid #e2e8f0; color: #ea580c; font-weight: bold;">Alta (100) — Gana a clases</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: 600;">Selector de Clase / Pseudo</td>
+          <td style="padding: 10px; border: 1px solid #e2e8f0;"><code>.main-header { ... }</code></td>
+          <td style="padding: 10px; border: 1px solid #e2e8f0; color: #0284c7; font-weight: bold;">Media (10)</td>
+        </tr>
+        <tr style="background: #f8fafc;">
+          <td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: 600;">Selector de Elemento / Etiqueta</td>
+          <td style="padding: 10px; border: 1px solid #e2e8f0;"><code>h1, p, div { ... }</code></td>
+          <td style="padding: 10px; border: 1px solid #e2e8f0; color: #64748b;">Baja (1)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="background: #fefce8; border: 1px solid #fef08a; border-left: 5px solid #eab308; border-radius: 8px; padding: 15px; margin-bottom: 15px; font-size: 14px;">
+      <strong style="color: #854d0e;">⭐ Ejercicio de referencia:</strong> Abre en Antigravity el archivo <code>2. CSS Basics/specificity.html</code>.<br>
+      Observa cómo <code>#header-id</code> prevalece sobre <code>.main-header</code> y cómo las etiquetas <code>&lt;h1&gt;</code> heredan la cascada.
+    </div>
+
+    <div style="background: #fff1f2; border: 1px solid #fecdd3; border-left: 5px solid #e11d48; border-radius: 8px; padding: 15px; font-size: 14px;">
+      <strong style="color: #9f1239;">⚠️ Mención Especial a <code>!important</code>:</strong><br>
+      <p style="margin: 6px 0 8px 0; color: #881337;">
+        Al añadir <code>!important</code> a cualquier propiedad (ej: <code>color: yellow !important;</code>), el navegador rompe las reglas normales de especificidad y fuerza su aplicación.
+      </p>
+      <ul style="margin: 0; padding-left: 20px; color: #881337;">
+        <li><strong>¿Por qué debes evitarlo en producción?</strong> Porque anula la cascada natural de CSS. Si necesitas modificar ese estilo en el futuro, tendrás que usar otro <code>!important</code>, volviendo el código ingobernable.</li>
+        <li><strong>Tu tarea aquí:</strong> Pruébalo al menos una vez en <code>specificity.html</code> para comprobar cómo aplasta a los selectores <code>#id</code>. ¡Conócelo bien para no tener que abusar de él!</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PASO 6 -->
+  <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+      <span style="background: #2563eb; color: #ffffff; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px;">6</span>
+      <h3 style="margin: 0; color: #0f172a; font-size: 18px; font-weight: 700;">Edición de tu CV en <code>project_personal_CV</code></h3>
+    </div>
+
+    <p style="font-size: 14px; color: #475569; margin-bottom: 12px;">
+      Entra en la carpeta <code>project_personal_CV/</code> dentro de Antigravity.
+    </p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-bottom: 15px;">
+      <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 15px;">
+        <strong style="color: #0f172a; font-size: 14px;">1. Estructura (<code>index.html</code>):</strong>
+        <p style="font-size: 13px; color: #475569; margin: 6px 0 0 0;">
+          Cambia "Jane Doe" por tu nombre, añade tus datos formativos en la UFV, tus habilidades y experiencias reales o proyectadas.
+        </p>
+      </div>
+      <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 15px;">
+        <strong style="color: #0f172a; font-size: 14px;">2. Estilos & Posicionamiento (<code>styles.css</code>):</strong>
+        <p style="font-size: 13px; color: #475569; margin: 6px 0 0 0;">
+          Consulta <code>2. CSS Basics/10. Positioning/</code> y usa <code>position: relative / absolute / fixed</code> y <code>z-index</code> para ubicar contenedores, cabecera o insignia según tu diseño.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PASO 7 -->
+  <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+      <span style="background: #2563eb; color: #ffffff; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px;">7</span>
+      <h3 style="margin: 0; color: #0f172a; font-size: 18px; font-weight: 700;">Flujo de Trabajo Git: <code>git status</code> y <code>git add</code></h3>
+    </div>
+
+    <p style="font-size: 14px; color: #475569;">
+      Guarda los archivos modificados en Antigravity y dirígete a tu terminal de Git Bash:
+    </p>
+
+    <div style="background: #0f172a; color: #f8fafc; padding: 14px 18px; border-radius: 8px; font-family: monospace; font-size: 13px; line-height: 1.6;">
+      <span style="color: #64748b;"># 1. Comprueba el estado (verás los archivos cambiados en ROJO):</span><br>
+      <span style="color: #38bdf8;">git status</span><br><br>
+      <span style="color: #64748b;"># 2. Añade los cambios al Staging Area (área de preparación):</span><br>
+      <span style="color: #38bdf8;">git add .</span><br><br>
+      <span style="color: #64748b;"># 3. Comprueba de nuevo (¡ahora aparecen en VERDE, listos para commit!):</span><br>
+      <span style="color: #38bdf8;">git status</span>
+    </div>
+  </div>
+
+  <!-- PASO 8 -->
+  <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+      <span style="background: #2563eb; color: #ffffff; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px;">8</span>
+      <h3 style="margin: 0; color: #0f172a; font-size: 18px; font-weight: 700;">Guardar la Instantánea con <code>git commit</code></h3>
+    </div>
+
+    <p style="font-size: 14px; color: #475569; margin-bottom: 10px;">
+      Un <strong>commit</strong> es una captura histórica permanente que registra autor, fecha y un mensaje que explica el propósito del cambio:
+    </p>
+
+    <div style="background: #0f172a; color: #f8fafc; padding: 14px 18px; border-radius: 8px; font-family: monospace; font-size: 13px; line-height: 1.5; margin-bottom: 10px;">
+      <span style="color: #38bdf8;">git commit -m</span> <span style="color: #a5d6ff;">"feat: personalizar CV con datos de alumno_xxx y nuevos estilos"</span>
+    </div>
+    <p style="font-size: 13px; color: #475569; margin: 0;">
+      Verás un resumen en la consola indicando el hash del commit y el conteo de <code>insertions(+)</code> y <code>deletions(-)</code>.
+    </p>
+  </div>
+
+  <!-- PASO 9 -->
+  <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+      <span style="background: #2563eb; color: #ffffff; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px;">9</span>
+      <h3 style="margin: 0; color: #0f172a; font-size: 18px; font-weight: 700;">Deshacer con <code>git revert</code> y tu Mejor Amigo: <code>git log</code></h3>
+    </div>
+
+    <!-- SUB-CARD REVERT -->
+    <div style="background: #f8fafc; border-left: 4px solid #f59e0b; padding: 14px; border-radius: 0 8px 8px 0; margin-bottom: 15px; font-size: 14px;">
+      <strong>↩️ ¿Qué pasa si te arrepientes tras hacer el commit?</strong><br>
+      Ejecuta <code>git revert HEAD --no-edit</code>. Esto creará automáticamente un nuevo commit inverso que deshace los cambios de forma segura sin destruir el historial ni causar problemas a tus compañeros.
+    </div>
+
+    <p style="font-size: 14px; color: #475569; margin-bottom: 8px;">
+      <strong>🌳 Tu comando estrella para visualizar todo el árbol de ramas y commits:</strong>
+    </p>
+    <div style="background: #0f172a; color: #4ade80; padding: 14px 18px; border-radius: 8px; font-family: monospace; font-size: 14px; font-weight: bold; margin-bottom: 8px;">
+      git log --oneline --all --graph
+    </div>
+    <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: #64748b;">
+      <li><code>--oneline</code>: Visualiza cada commit resumido en una línea.</li>
+      <li><code>--all</code>: Muestra todas las ramas (locales y remotas).</li>
+      <li><code>--graph</code>: Dibuja las ramas y uniones en forma de árbol visual.</li>
+    </ul>
+  </div>
+
+  <!-- PASO 10 -->
+  <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+      <span style="background: #2563eb; color: #ffffff; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px;">10</span>
+      <h3 style="margin: 0; color: #0f172a; font-size: 18px; font-weight: 700;">Subir tu Rama a GitHub con <code>git push</code></h3>
+    </div>
+
+    <p style="font-size: 14px; color: #475569; margin-bottom: 10px;">
+      Sincroniza tus commits locales con la nube de GitHub creando la rama remota:
+    </p>
+
+    <div style="background: #0f172a; color: #f8fafc; padding: 14px 18px; border-radius: 8px; font-family: monospace; font-size: 13px; line-height: 1.5; margin-bottom: 12px;">
+      <span style="color: #38bdf8;">git push -u origin</span> branch_alumno_xxx
+    </div>
+
+    <div style="background: #ecfdf5; border-left: 4px solid #10b981; padding: 12px; border-radius: 0 6px 6px 0; font-size: 13px; color: #065f46;">
+      🔎 <strong>Comprobación clave:</strong> Vuelve a ejecutar <code>git log --oneline --all --graph</code>. Comprobarás que la etiqueta remota <code>origin/branch_alumno_xxx</code> apunta <strong>exactamente al mismo commit</strong> que tu rama local <code>branch_alumno_xxx</code>.
+    </div>
+  </div>
+
+  <!-- PASO 11 -->
+  <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+      <span style="background: #2563eb; color: #ffffff; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px;">11</span>
+      <h3 style="margin: 0; color: #0f172a; font-size: 18px; font-weight: 700;">Publicar tu Web en GitHub Pages</h3>
+    </div>
+
+    <ol style="margin: 0 0 15px 20px; font-size: 14px; color: #334155; padding: 0;">
+      <li style="margin-bottom: 6px;">Abre tu navegador y ve a tu fork en GitHub.</li>
+      <li style="margin-bottom: 6px;">Entra en la pestaña <strong>Settings</strong> ➔ Menú lateral <strong>Pages</strong>.</li>
+      <li style="margin-bottom: 6px;">En <strong>Branch</strong>, selecciona tu rama: <code>branch_alumno_xxx</code> y la carpeta <code>/ (root)</code>. Pulsa <strong>Save</strong>.</li>
+      <li style="margin-bottom: 6px;">Espera unos segundos hasta que aparezca el enlace público de tu sitio.</li>
+    </ol>
+
+    <div style="background: #f0fdf4; border: 1px dashed #22c55e; border-radius: 8px; padding: 14px; font-size: 14px; color: #166534;">
+      🌐 <strong>Tu enlace final del CV será:</strong><br>
+      <code>https://TU_USUARIO.github.io/Hands-On-HTML-and-CSS-Building-Real-World-Websites-and-Web-Apps/project_personal_CV/</code>
+    </div>
+  </div>
+
+  <!-- PASO 12 -->
+  <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 30px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+      <span style="background: #e11d48; color: #ffffff; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px;">12</span>
+      <h3 style="margin: 0; color: #0f172a; font-size: 18px; font-weight: 700;">Vídeo de Reflexión (1 Minuto) 📹</h3>
+    </div>
+
+    <p style="font-size: 14px; color: #475569; margin-bottom: 12px;">
+      Grábate en vídeo (máx. 1 minuto) respondiendo con sinceridad:
+    </p>
+
+    <div style="display: flex; flex-direction: column; gap: 8px; font-size: 14px;">
+      <div style="background: #f8fafc; padding: 10px 14px; border-radius: 6px; border-left: 3px solid #3b82f6;">
+        1️⃣ ¿Cómo te has sentido durante la práctica maquetando tu propio CV?
+      </div>
+      <div style="background: #f8fafc; padding: 10px 14px; border-radius: 6px; border-left: 3px solid #f59e0b;">
+        2️⃣ ¿En qué aspecto te has atascado más (especificidad, positioning, Git, rutas de archivos)?
+      </div>
+      <div style="background: #f8fafc; padding: 10px 14px; border-radius: 6px; border-left: 3px solid #10b981;">
+        3️⃣ ¿Cómo te has sentido utilizando la consola de Git respecto a lo que esperabas?
+      </div>
+    </div>
+  </div>
+
+  <!-- ENTREGABLES CANVAS -->
+  <div style="background: linear-gradient(to right, #0f172a, #1e293b); color: #ffffff; border-radius: 14px; padding: 25px; margin-bottom: 30px;">
+    <h3 style="margin: 0 0 15px 0; color: #ffffff; font-size: 20px; font-weight: 700;">
+      📦 ¿Qué debes entregar en esta tarea de Canvas?
+    </h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 15px;">
+      <div style="background: rgba(255, 255, 255, 0.1); padding: 15px; border-radius: 8px;">
+        <span style="font-size: 20px;">🌐</span>
+        <div style="font-weight: 600; margin: 4px 0;">1. URL de GitHub Pages</div>
+        <div style="font-size: 13px; color: #cbd5e1;">Enlace directo a tu CV publicado.</div>
+      </div>
+      <div style="background: rgba(255, 255, 255, 0.1); padding: 15px; border-radius: 8px;">
+        <span style="font-size: 20px;">🐙</span>
+        <div style="font-weight: 600; margin: 4px 0;">2. URL de tu Rama en GitHub</div>
+        <div style="font-size: 13px; color: #cbd5e1;">Enlace a tu rama <code>branch_alumno_xxx</code> en tu fork.</div>
+      </div>
+      <div style="background: rgba(255, 255, 255, 0.1); padding: 15px; border-radius: 8px;">
+        <span style="font-size: 20px;">🎬</span>
+        <div style="font-weight: 600; margin: 4px 0;">3. Vídeo de 1 minuto</div>
+        <div style="font-size: 13px; color: #cbd5e1;">Archivo adjunto o enlace con permisos públicos.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RÚBRICA DE EVALUACIÓN -->
+  <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 22px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+    <h3 style="margin: 0 0 14px 0; color: #1e293b; font-size: 18px; font-weight: 700;">
+      📊 Rúbrica de Calificación
+    </h3>
+    <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+      <thead>
+        <tr style="background: #f1f5f9; text-align: left;">
+          <th style="padding: 10px; border-bottom: 2px solid #cbd5e1;">Criterio</th>
+          <th style="padding: 10px; border-bottom: 2px solid #cbd5e1; width: 100px; text-align: center;">Peso</th>
+          <th style="padding: 10px; border-bottom: 2px solid #cbd5e1;">Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 10px; border-bottom: 1px solid #e2e8f0; font-weight: 600;">Fork y Rama en Git</td>
+          <td style="padding: 10px; border-bottom: 1px solid #e2e8f0; text-align: center; color: #2563eb; font-weight: bold;">20%</td>
+          <td style="padding: 10px; border-bottom: 1px solid #e2e8f0;">Fork bien generado y desarrollo en <code>branch_alumno_xxx</code>.</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border-bottom: 1px solid #e2e8f0; font-weight: 600;">Commits y Buenas Prácticas</td>
+          <td style="padding: 10px; border-bottom: 1px solid #e2e8f0; text-align: center; color: #2563eb; font-weight: bold;">20%</td>
+          <td style="padding: 10px; border-bottom: 1px solid #e2e8f0;">Uso adecuado de <code>status</code>, <code>add</code> y mensajes descriptivos.</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border-bottom: 1px solid #e2e8f0; font-weight: 600;">Calidad del CV (HTML/CSS)</td>
+          <td style="padding: 10px; border-bottom: 1px solid #e2e8f0; text-align: center; color: #2563eb; font-weight: bold;">25%</td>
+          <td style="padding: 10px; border-bottom: 1px solid #e2e8f0;">Personalización real, especificidad bien entendida y uso de posicionamiento.</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border-bottom: 1px solid #e2e8f0; font-weight: 600;">Despliegue en GitHub Pages</td>
+          <td style="padding: 10px; border-bottom: 1px solid #e2e8f0; text-align: center; color: #2563eb; font-weight: bold;">15%</td>
+          <td style="padding: 10px; border-bottom: 1px solid #e2e8f0;">Página accesible sin errores de carga de CSS o imágenes.</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border-bottom: 1px solid #e2e8f0; font-weight: 600;">Vídeo de Autoevaluación</td>
+          <td style="padding: 10px; border-bottom: 1px solid #e2e8f0; text-align: center; color: #2563eb; font-weight: bold;">20%</td>
+          <td style="padding: 10px; border-bottom: 1px solid #e2e8f0;">Claridad y sinceridad respondiendo a las tres cuestiones planteadas.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
