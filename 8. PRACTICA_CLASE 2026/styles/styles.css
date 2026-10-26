@@ -173,17 +173,17 @@ body {
 #equipo-footer {
     width: 100%;
     margin-top: auto;
-    padding: clamp(2.75rem, 6vw, 4rem) clamp(1.25rem, 5vw, 3rem) 1.25rem;
-    color: #b8c4d8;
-    background: linear-gradient(145deg, #111a2b 0%, #0a101c 52%, #070b13 100%);
-    border-top: 1px solid rgba(125, 211, 252, 0.24);
+    padding: clamp(2.5rem, 5vw, 3.5rem) clamp(1.25rem, 5vw, 3rem) 1.25rem;
+    color: #cbd5e1;
+    background: #070a12;
+    border-top: 1px solid #3b82f6;
     box-sizing: border-box;
 }
 
 #equipo-footer .footer-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(1.75rem, 4vw, 3.5rem);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr) minmax(0, 0.85fr);
+    gap: clamp(1.5rem, 4vw, 3.25rem);
     width: min(100%, 1120px);
     margin: 0 auto;
 }
@@ -193,26 +193,23 @@ body {
 }
 
 #equipo-footer .footer-titulo {
-    display: inline-block;
-    margin: 0 0 1rem;
-    padding-bottom: 0.55rem;
-    color: #f1f5f9;
-    font-size: 1.05rem;
-    font-weight: 600;
+    margin: 0 0 0.9rem;
+    color: #38bdf8;
+    font-size: 0.95rem;
+    font-weight: 700;
     line-height: 1.3;
-    border-bottom: 1px solid rgba(125, 211, 252, 0.55);
 }
 
 #equipo-footer .footer-col p {
     margin: 0 0 0.55rem;
-    color: #b8c4d8;
+    color: #cbd5e1;
     font-size: 0.925rem;
     line-height: 1.7;
     overflow-wrap: anywhere;
 }
 
 #equipo-footer .footer-col p.nombres-alumnos {
-    color: #7dd3fc;
+    color: #38bdf8;
     font-weight: 600;
 }
 
@@ -225,28 +222,26 @@ body {
 }
 
 #equipo-footer .footer-links a {
-    display: inline-flex;
-    align-items: baseline;
-    gap: 0.4rem;
-    color: #b8c4d8;
+    display: inline-block;
+    color: #cbd5e1;
     font-size: 0.925rem;
     line-height: 1.6;
     text-decoration: underline;
-    text-decoration-color: transparent;
+    text-decoration-color: rgba(56, 189, 248, 0.45);
     text-decoration-thickness: 1px;
     text-underline-offset: 0.22em;
     transition: color 160ms ease, text-decoration-color 160ms ease;
 }
 
 #equipo-footer .footer-links a:hover {
-    color: #7dd3fc;
+    color: #38bdf8;
     text-decoration-color: currentColor;
 }
 
 #equipo-footer .footer-links a:focus-visible {
-    color: #7dd3fc;
+    color: #38bdf8;
     border-radius: 2px;
-    outline: 2px solid #7dd3fc;
+    outline: 2px solid #38bdf8;
     outline-offset: 4px;
 }
 
@@ -254,13 +249,13 @@ body {
     width: min(100%, 1120px);
     margin: clamp(2rem, 4vw, 2.75rem) auto 0;
     padding-top: 1.1rem;
-    border-top: 1px solid rgba(184, 196, 216, 0.16);
+    border-top: 1px solid rgba(148, 163, 184, 0.24);
     text-align: center;
 }
 
 #equipo-footer .footer-bottom p {
     margin: 0;
-    color: #aab7cb;
+    color: #94a3b8;
     font-size: 0.82rem;
     line-height: 1.6;
 }
@@ -280,10 +275,6 @@ body {
     #equipo-footer .footer-grid {
         grid-template-columns: minmax(0, 1fr);
         gap: 1.65rem;
-    }
-
-    #equipo-footer .footer-titulo {
-        margin-bottom: 0.7rem;
     }
 }
 
