@@ -28,11 +28,13 @@ body {
 /* ESTRUCTURA DEL CONTENIDO CENTRAL EN 2 COLUMNAS                 */
 /* ============================================================== */
 .contenedor-principal {
-    flex: 1;                  /* Toma todo el espacio disponible entre header y footer */
+    flex: 1;
+    /* Toma todo el espacio disponible entre header y footer */
     display: flex;
     max-width: 1200px;
     width: 100%;
-    margin: 90px auto 40px auto; /* 90px arriba para no ser tapado por el menú fixed */
+    margin: 20px auto 40px auto;
+    /* 20px porque el widget de la API ya absorbe los 90px del menú */
     padding: 0 20px;
     gap: 30px;
 }
@@ -40,7 +42,8 @@ body {
 /* Las dos columnas ocupan 50% cada una por defecto */
 .columna {
     flex: 1;
-    min-width: 0;             /* Previene desbordamiento en flexbox */
+    min-width: 0;
+    /* Previene desbordamiento en flexbox */
 }
 
 /* Placeholder inicial para los equipos */
@@ -72,15 +75,18 @@ body {
 /* Todo el CSS del Equipo 1 debe comenzar con #equipo-header      */
 /* ============================================================== */
 #equipo-header {
-    position: fixed;         /* Fijo en la pantalla durante el scroll */
+    position: fixed;
+    /* Fijo en la pantalla durante el scroll */
     top: 0;
     left: 0;
-    width: 100%;             /* 100% de ancho */
+    width: 100%;
+    /* 100% de ancho */
     height: 70px;
     background: rgba(15, 23, 42, 0.85);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    z-index: 1000;           /* Máxima prioridad de capa */
+    z-index: 1000;
+    /* Máxima prioridad de capa */
     display: flex;
     align-items: center;
     padding: 0 30px;
@@ -171,8 +177,10 @@ body {
 /* Todo el CSS del Equipo 2 debe comenzar con #equipo-footer      */
 /* ============================================================== */
 #equipo-footer {
-    width: 100%;             /* 100% del ancho */
-    margin-top: auto;        /* Se ancla automáticamente al fondo */
+    width: 100%;
+    /* 100% del ancho */
+    margin-top: auto;
+    /* Se ancla automáticamente al fondo */
     background: #070a12;
     color: #64748b;
     padding: 30px 20px;
@@ -197,15 +205,202 @@ body {
 
 
 /* ============================================================== */
+/* ESTILOS PARA EL WIDGET DE LA API DEL CLIMA (DIDÁCTICO)         */
+/* ============================================================== */
+.seccion-api-clima {
+    max-width: 1200px;
+    width: 100%;
+    margin: 90px auto 0 auto;
+    /* 90px para salvar la barra de navegación fija */
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.caja-api-clima {
+    background: linear-gradient(135deg, #131c2e 0%, #0d1524 100%);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 16px;
+    padding: 20px 24px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+.caja-api-clima .api-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.caja-api-clima .badge-api {
+    background: #2563eb;
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+}
+
+.caja-api-clima h3 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 1.15rem;
+}
+
+.caja-api-clima .api-intro {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    margin-bottom: 16px;
+}
+
+.api-interaccion {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+}
+
+.api-formulario {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+#input-ciudad {
+    background: #0b0f19;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+#input-ciudad:focus {
+    border-color: #3b82f6;
+}
+
+.btn-api {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.btn-api:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+.resultado-temperatura {
+    font-size: 0.95rem;
+    padding: 8px 14px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #e2e8f0;
+}
+
+.resultado-temperatura.exito {
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: #34d399;
+}
+
+.resultado-temperatura.error {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #f87171;
+}
+
+.detalles-headers {
+    margin-top: 10px;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 0.88rem;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.detalles-headers summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: #60a5fa;
+    outline: none;
+}
+
+.detalles-headers summary:hover {
+    color: #93c5fd;
+}
+
+.contenido-reflexion {
+    margin-top: 12px;
+    color: #cbd5e1;
+    line-height: 1.6;
+}
+
+.tarjeta-headers {
+    background: #080c14;
+    border-left: 3px solid #3b82f6;
+    padding: 10px 14px;
+    margin-top: 10px;
+    border-radius: 0 8px 8px 0;
+}
+
+.tarjeta-headers.tarjeta-headers-error {
+    border-left-color: #ef4444;
+    background: rgba(239, 68, 68, 0.08);
+}
+
+.tarjeta-headers.tarjeta-headers-warning {
+    border-left-color: #f59e0b;
+    background: rgba(245, 158, 11, 0.08);
+}
+
+.tarjeta-headers ul {
+    margin: 8px 0 0 16px;
+    padding: 0;
+}
+
+.tarjeta-headers li {
+    margin-bottom: 4px;
+}
+
+.badge-status {
+    background: #10b981;
+    color: #ffffff;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.badge-status.error {
+    background: #ef4444;
+}
+
+.badge-status.warning {
+    background: #f59e0b;
+}
+
+
+/* ============================================================== */
 /* RESPONSIVIDAD (Móviles y Tablets)                              */
 /* ============================================================== */
 @media (max-width: 768px) {
     .contenedor-principal {
-        flex-direction: column; /* Pasa de 2 columnas a 1 columna vertical */
+        flex-direction: column;
+        /* Pasa de 2 columnas a 1 columna vertical */
         margin-top: 80px;
     }
 
     #equipo-header .nav-links {
-        display: none; /* Simplificado para móviles */
+        display: none;
+        /* Simplificado para móviles */
     }
 }

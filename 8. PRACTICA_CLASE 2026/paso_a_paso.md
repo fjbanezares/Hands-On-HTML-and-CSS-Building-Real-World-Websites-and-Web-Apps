@@ -28,6 +28,9 @@ Haz clic en la guía de tu equipo:
   - *Rama Git:* `feature/equipo-4-izquierda-mejoras`
   - *Misión:* Lista estilizada de propuestas para la clase y formulario interactivo de sugerencias con efectos hover.
 
+* 💡 **[Cuaderno de Reflexiones de Diseño Web](reflexiones.md)**
+  - *¿Por qué el menú se escribe como `<ul>` y se ve en una línea horizontal?* (Flexbox, accesibilidad, semántica, box-sizing y APIs).
+
 ---
 
 ## 🚨 Reglas de Convivencia para no provocar Conflictos de Git

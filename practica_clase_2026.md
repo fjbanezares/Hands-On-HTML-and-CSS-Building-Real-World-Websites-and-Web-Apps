@@ -16,6 +16,8 @@ Para no perder tiempo en clase leyendo teoría si necesitas avanzar ya, cada equ
 * 📸 **[Paso a Paso — Equipo 3: Columna Derecha — Foto y Música con Botón JS](8.%20PRACTICA_CLASE%202026/paso_a_paso_equipo3.md)**
 * 💡 **[Paso a Paso — Equipo 4: Columna Izquierda — Aspectos a Mejorar y Sugerencias](8.%20PRACTICA_CLASE%202026/paso_a_paso_equipo4.md)**
 * 📋 **[Índice Unificado Paso a Paso](8.%20PRACTICA_CLASE%202026/paso_a_paso.md)**
+* 💡 **[Cuaderno de Reflexiones: ¿Por qué la lista sale en una sola línea? (Flexbox y Semántica)](8.%20PRACTICA_CLASE%202026/reflexiones.md)**
+* 📊 **[Infografía Explicada: Del Dato a la Web (Backend, APIs, HTML, CSS y DOM)](APIs_y_Front_End_imagenes/README.md)** *(o descarga el PDF editorial: [Del_dato_a_la_web.pdf](APIs_y_Front_End_imagenes/Del_dato_a_la_web.pdf))*
 
 ---
 
@@ -291,6 +293,64 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 ```
+
+---
+
+### 4.2. Conexión con una API Pública en Vivo (`fetch`) y Reflexión sobre Cabeceras HTTP
+
+En la práctica 2026 hemos añadido un ejemplo real de llamada a una API pública (Open-Meteo) para consultar el tiempo de **Madrid** (o cualquier ciudad) en tiempo real mediante `scripts/clima.js`.
+
+#### 🤖 1. ¿Qué es una API en la Web?
+Una **API (Application Programming Interface)** es un intermediario que permite a nuestra página web pedirle información a otro servidor sin tener que recargar toda la pantalla.
+* **Analogía:** Cuando vas a un restaurante, tú (el navegador) no entras a la cocina (la base de datos meteorológica). Llamas al camarero (la **API**), le pides la comanda ("*Dime el clima de Madrid*"), el camarero va a la cocina y te trae el plato preparado en una bandeja (**JSON**).
+
+#### 💻 2. El Código en JavaScript (`fetch` + `async/await`):
+```javascript
+// Enviamos la petición a la API con fetch()
+async function consultarTemperatura(ciudad = "Madrid") {
+    // 1. Convertimos el nombre "Madrid" en coordenadas
+    const resGeo = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${ciudad}&count=1&language=es&format=json`);
+    const dataGeo = await resGeo.json();
+    const { latitude, longitude, name } = dataGeo.results[0];
+
+    // 2. Pedimos el clima para esas coordenadas
+    const resClima = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m`);
+    const dataClima = await resClima.json();
+
+    // 3. Obtenemos el dato y lo mostramos en la web
+    const temp = dataClima.current.temperature_2m;
+    document.getElementById("resultado-clima").innerHTML = `🌡️ En ${name} hay ${temp} °C`;
+}
+```
+
+#### 📦 3. Reflexión Crucial: ¿Qué viaja en las Cabeceras HTTP (*Headers*)?
+Cuando ejecutamos esa sencilla línea `fetch(url)`, a través de Internet no viaja solo la palabra "Madrid". Viaja un **mensaje HTTP completo** compuesto por:
+1. **Cabeceras de Petición (*Request Headers*):**
+   - `User-Agent`: Qué navegador y sistema operativo está pidiendo el dato.
+   - `Accept: application/json`: El cliente le pide amablemente al servidor: *"Por favor, devuélveme el dato en JSON, no en HTML"*.
+2. **Cabeceras de Respuesta (*Response Headers*):**
+   - `HTTP/1.1 200 OK`: El servidor confirma que la petición se ha procesado con éxito.
+   - `Content-Type: application/json; charset=utf-8`: **Fundamental.** El servidor le indica al navegador: *"Lo que viene a continuación no es una imagen ni una web, es un texto en formato JSON codificado en UTF-8"*.
+   - `Access-Control-Allow-Origin: *` (CORS): La regla de seguridad que le dice al navegador: *"Permito que cualquier página web lea mis datos"*.
+   
+> 💡 **Conexión con la Infografía:**  
+> Como vimos en la **Lámina 3 ("Las etiquetas también pesan")**, para transmitir un número tan pequeño como `8.6 °C`, los metadatos de la API (nombres de claves JSON y cabeceras HTTP de red) ocupan cientos de bytes más que el dato puro. ¡Comprender este viaje es la clave del Big Data y las APIs modernas!
+
+#### ⚠️ 4. La Trampa Clásica de JavaScript: ¿Qué pasa cuando la respuesta NO es 200?
+Muchos programadores noveles asumen que si la API falla (por ejemplo, con un `404 Not Found` o un `500 Internal Server Error`), el bloque `try...catch` capturará el error automáticamente. **¡Esto es falso en `fetch()`!**
+* `fetch()` **solo se rechaza** si ocurre un fallo físico de red (te quedas sin internet, el cable se desconecta o la URL no resuelve en el DNS).
+* Si el servidor responde con un código de error como `404` o `500`, para el navegador la comunicación fue exitosa (hubo respuesta).
+* **Por eso es obligatorio comprobar `if (!res.ok)`:**
+  ```javascript
+  const res = await fetch(url);
+  if (!res.ok) {
+      // El servidor devolvió un error (400, 404, 500...)
+      console.error(`Error HTTP: ${res.status} ${res.statusText}`);
+      resultadoDiv.innerHTML = `❌ Error en el servidor (Código ${res.status})`;
+      return;
+  }
+  ```
+En nuestra práctica 2026, si la ciudad no existe o el servidor falla, el panel visual **refresca tanto el mensaje de error como la radiografía de las cabeceras**, mostrando el código HTTP exacto en color rojo.
 
 ---
 
