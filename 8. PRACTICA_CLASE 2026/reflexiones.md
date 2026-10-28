@@ -12,6 +12,7 @@
 4. [La levitación de `position: fixed`: ¿Por qué tapa el contenido si no dejamos margen?](#4-la-levitación-de-position-fixed-por-qué-tapa-el-contenido-si-no-dejamos-margen)
 5. [La regla de oro del Box Model: ¿Por qué `box-sizing: border-box` salva vidas?](#5-la-regla-de-oro-del-box-model-por-qué-box-sizing-border-box-salva-vidas)
 6. [La trampa de las APIs: ¿Por qué `fetch()` no lanza error con un 404 o 500?](#6-la-trampa-de-las-apis-por-qué-fetch-no-lanza-error-con-un-404-o-500)
+7. [El Gran Dilema de Git: Si estoy en una rama y hago `git push`, ¿se sube `main` o mi rama?](#7-el-gran-dilema-de-git-si-estoy-en-una-rama-y-hago-git-push-se-sube-main-o-mi-rama)
 
 ---
 
@@ -203,6 +204,64 @@ try {
       return;
   }
   ```
+
+---
+
+## 7. El Gran Dilema de Git: Si estoy en una rama y hago `git push`, ¿se sube `main` o mi rama?
+
+Es una de las dudas y miedos más habituales en clase:  
+*«He creado mi rama `b1`, he hecho commits y ahora quiero subirla a GitHub. Si escribo simplemente `git push`, ¿subirá la rama `main` por defecto? ¿Tengo que especificar siempre `git push origin b1`?»*
+
+### La respuesta corta:
+**No, jamás se subirá `main`.** Git siempre opera sobre la rama en la que estás trabajando en ese momento (`HEAD`).
+
+---
+
+### ¿Qué pasa si estás en `b1` y ejecutas `git push` a secas?
+Si la rama es nueva y solo existe en tu ordenador local, Git **no sube nada y se detiene por seguridad**, mostrándote este aviso:
+
+```text
+fatal: The current branch b1 has no upstream branch.
+To push the current branch and set the remote as upstream, use:
+
+    git push --set-upstream origin b1
+```
+
+Git te avisa de que el servidor remoto (GitHub) aún no conoce esa rama y no sabe a dónde enviarla.
+
+---
+
+### Las dos formas de subir tu rama:
+
+#### 1. La forma manual puntual:
+```bash
+git push origin b1
+```
+* **Qué hace:** Sube la rama `b1` al repositorio remoto `origin`.
+* **Inconveniente:** No crea el vínculo permanente. Si más tarde haces otro commit y escribes `git push` a secas, te volverá a pedir que especifiques el destino.
+
+#### 2. La forma profesional recomendada con `-u` (Upstream):
+```bash
+git push -u origin b1
+```
+* **Qué hace el parámetro `-u` (o `--set-upstream`):**  
+  Sube tu rama y además **la empareja y conecta permanentemente** con `origin/b1`.
+* **La gran ventaja:** Solo tienes que escribirlo **una única vez** al crear la rama. A partir de ese momento, para todos los siguientes commits en esa rama podrás escribir cómodamente:
+  ```bash
+  git push
+  # y para descargar cambios de los compañeros:
+  git pull
+  ```
+  Git ya sabrá automáticamente que tu rama local `b1` se comunica con `origin/b1`.
+
+---
+
+### ¿De dónde viene el mito de que se puede subir `main` sin querer?
+Hace más de una década (en versiones de Git anteriores a la 2.0), existía una configuración por defecto llamada `push.default matching` que intentaba enviar todas las ramas locales que compartiesen nombre con el remoto.  
+
+Desde Git 2.0 (año 2014), la configuración estándar mundial es `push.default simple`:
+* Solo envía **la rama actual en la que te encuentras**.
+* Si estás situado en `feature/equipo-1-menu`, Git **jamás tocará `main`**.
 
 ---
 
