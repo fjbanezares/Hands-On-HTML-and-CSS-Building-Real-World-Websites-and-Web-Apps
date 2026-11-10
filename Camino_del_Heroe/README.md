@@ -17,11 +17,12 @@
 5. [Lámina 5: Cuatro piezas, una web brillante (Front-End para presentar datos)](#5-cuatro-piezas-una-web-brillante)
 6. [Lámina 6: APIs: puentes hacia otros mundos (Ingesta y consumo de datos)](#6-apis-puentes-hacia-otros-mundos)
 7. [Lámina 7: El poder del modelo entidad-relación (Estructura y calidad de datos)](#7-el-poder-del-modelo-entidad-relación)
+   * [Lámina 7 bis: El gran poder: modelar los datos (Evolución del modelo)](#7-bis-el-gran-poder-modelar-los-datos)
 8. [Lámina 8: Puentes entre clientes y pedidos (SQL, JOINs y Feature Engineering)](#8-puentes-entre-clientes-y-pedidos)
 9. [Lámina 9: La web cobra vida (Back-End y Servicio de Modelos en Tiempo Real)](#9-la-web-cobra-vida)
 10. [Lámina 10: NoSQL: nuevas formas de pensar (Big Data, documentos y grafos)](#10-nosql-nuevas-formas-de-pensar)
 11. [Lámina 11: La prueba final: nuestra app en la nube (Puesta en producción)](#11-la-prueba-final-nuestra-app-en-la-nube)
-12. [Lámina 12: El siguiente horizonte: pilotar la Inteligencia Artificial](#12-el-siguiente-horizonte-aprender-a-pilotar)
+12. [Lámina 12: El siguiente horizonte: inteligencia artificial (Aprender a pilotar el caza de la IA)](#12-el-siguiente-horizonte-inteligencia-artificial)
 
 ---
 
@@ -95,6 +96,16 @@
 
 ---
 
+### 7 bis. El gran poder: modelar los datos (Evolución y consolidación)
+
+![7 bis. El gran poder: modelar los datos](7%20bis.%20El%20gran%20poder_%20modelar%20los%20datos-12.png)
+
+> **💡 Conexión con el Máster (Datos & Machine Learning):**  
+> Antes de aplicar algoritmos complejos de IA, el verdadero poder del científico de datos reside en convertir un problema caótico de negocio en entidades estructuradas y relaciones coherentes.
+* **El contexto de la asignatura:** Esta segunda lámina profundiza en la transformación del desorden de registros en un esquema relacional limpio, eliminando redundancias y preparando los datos para ser consumidos sin fisuras.
+
+---
+
 ### 8. Puentes entre clientes y pedidos
 
 ![8. Puentes entre clientes y pedidos](8.%20Puentes%20entre%20clientes%20y%20pedidos-7.png)
@@ -135,13 +146,16 @@
 
 ---
 
-### 12. El siguiente horizonte: aprender a pilotar
+### 12. El siguiente horizonte: inteligencia artificial
 
-![12. El siguiente horizonte: modelar los datos y la IA](12.%20El%20gran%20poder_%20modelar%20los%20datos-12.png)
+![12. El siguiente horizonte: inteligencia artificial](12.%20El%20siguiente%20horizonte_%20inteligencia%20artificial-12.jpg)
 
 > **💡 Conexión con el Máster (Datos & Machine Learning):**  
-> Llegasteis con dudas y salís con el fuselaje, los motores y el instrumental de vuelo listos: con estas bases firmes de datos y software, ya tenéis todo lo necesario para aprender a pilotar la Inteligencia Artificial.
-* **El contexto de la asignatura:** La transición natural hacia las asignaturas avanzadas de Machine Learning, Deep Learning y Analítica Predictiva con la confianza de quien comprende el viaje completo del dato.
+> **«¡Ahora sabemos construir la base. Toca aprender a pilotar!»**  
+> Todo lo aprendido en esta asignatura (Linux, Docker, Git, Front-End, Back-End, APIs, SQL, NoSQL y Cloud) no era una distracción del Machine Learning: era el hangar de ingeniería donde construisteis los cimientos, la aerodinámica y los reactores. La asignatura os ha puesto verdaderamente fuertes para subir a la cabina y **pilotar el caza de combate de los Modelos de Inteligencia Artificial** en las próximas asignaturas.
+* **El mensaje final de graduación:**  
+  * *"Nuestros datos pueden alimentar modelos, con calidad, permisos y evaluación."*  
+  * *"No terminamos con todas las respuestas: terminamos capaces de construir las siguientes."*
 
 ---
 
